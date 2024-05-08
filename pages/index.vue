@@ -1,17 +1,13 @@
 <template>
-  <div class="m-20">
+  <div>
     <div class="mt-10" v-for="(proyecto, index) in proyectos" :key="index">
       <h1 class="font-bold text-xl">{{ proyecto.titulo }}</h1>
       <p>{{ proyecto.descripcion }}</p>
-      <div class="grid grid-cols-2 pt-10 md:grid-cols-4 gap-4">
-        <div v-for="(imagen, key) in proyecto.img" :key="key" class="w-full h-full">
-          <div class="bg-gray-200 p-4">{{ imagen.titulo }}</div>
+      <div class="grid grid-cols-1 pt-10 md:grid-cols-2 gap-4 xl:grid-cols-4 ">
+        <div v-for="(imagen, key) in proyecto.img" :key="key" class="w-full h-full shadow-2xl">
+          <div class="bg-green-200 p-4 font-bold">{{ imagen.titulo }}</div>
           <div class="w-full h-56">
-            <img
-              class="w-full h-full object-cover"
-              :src="imagen.ime"
-              :alt="imagen.titulo"
-            />
+            <img class="w-full h-full object-cover" :src="imagen.ime" :alt="imagen.titulo" />
           </div>
         </div>
       </div>
@@ -20,7 +16,9 @@
 </template>
 
 <script setup>
-const colorMode = useColorMode()
+import { useColorMode } from "@vueuse/core";
+
+const colorMode = useColorMode();
 const isDark = computed({
   get() {
     return colorMode.value === "dark";
@@ -29,8 +27,6 @@ const isDark = computed({
     colorMode.preference = "light";
   },
 });
-
-
 const proyectos = ref([
   {
     titulo: "Proyecto de Yopal",
