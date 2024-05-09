@@ -1,32 +1,33 @@
 <template>
-  <div>
-    <div class="mt-10" v-for="(proyecto, index) in proyectos" :key="index">
-      <h1 class="font-bold text-xl">{{ proyecto.titulo }}</h1>
-      <p>{{ proyecto.descripcion }}</p>
-      <div class="grid grid-cols-1 pt-10 md:grid-cols-2 gap-4 xl:grid-cols-4 ">
-        <div v-for="(imagen, key) in proyecto.img" :key="key" class="w-full h-full shadow-2xl">
-          <div class="bg-green-200 p-4 font-bold">{{ imagen.titulo }}</div>
-          <div class="w-full h-56">
-            <img class="w-full h-full object-cover" :src="imagen.ime" :alt="imagen.titulo" />
+  <template>
+    <div class="bg-white mx-auto max-w-7xl px-4 py-2 sm:px-6 sm:py-2 lg:px-8">
+      <h2 class="sr-only">Proyectos</h2>
+
+      <div class="grid grid-cols-1 gap-y-10">
+        <div v-for="(proyecto, index) in proyectos" :key="index">
+          <div class="w-full mb-8">
+            <div class="group">
+              <h3 class="mt-4 text-sm text-gray-700 font-bold">{{ proyecto.titulo }}</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">{{ proyecto.descripcion }}</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
+              <div v-for="(imagen, key) in proyecto.img" :key="key" class="w-full h-full shadow-2xl group">
+                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200">
+                  <img :src="imagen.ime" :alt="imagen.titulo"
+                    class="h-full w-full object-cover object-center group-hover:opacity-75" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <script setup>
-import { useColorMode } from "@vueuse/core";
 
-const colorMode = useColorMode();
-const isDark = computed({
-  get() {
-    return colorMode.value === "dark";
-  },
-  set() {
-    colorMode.preference = "light";
-  },
-});
 const proyectos = ref([
   {
     titulo: "Proyecto de Yopal",
