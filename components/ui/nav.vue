@@ -1,44 +1,37 @@
 <template>
   <div>
-    <nav class="bg-yellow-300 border-gray-200 dark:bg-green- md:block">
+    <nav
+      class="bg-gradient-to-r from-yellow-500 to-yellow-300 dark:from-yellow-200 dark:to-yellow-300 shadow-lg fixed w-full z-50">
       <div class="flex flex-wrap items-center justify-between mx-auto p-4">
-        <button @click="isOpen = !isOpen" class="md:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            class="h-6 w-6 text-gray-500 hover:text-black">
+        <a href="/" class="flex items-center">
+          <img src="/s.png" class="h-10 w-10" alt="Cruzando Fronteras Logo" />
+          <span class="text-2xl font-semibold text-black  dark:text-black dark:text-shadow-white ml-2">Cruzando
+            Fronteras</span>
+        </a>
+        <button @click="isOpen = !isOpen" class="md:hidden text-black dark:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-        <a href="/" class="flex ">
-          <img src="/s.png" class="h-10 w-10 dark:text-white" alt="Flowbite Logo" />
-          <span class=" text-2xl font-semibold  dark:text-white">Cruzando Fronteras</span>
-        </a>
-        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <div :class="{ 'block': isOpen, 'hidden': !isOpen }" class="w-full md:flex md:w-auto">
+          <ul class="font-medium flex flex-col md:flex-row md:space-x-8">
             <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded md:p-0 dark:text-white', { 'bg-yellow-400': route.path === '/' }]"
-                to="/" aria-current="page">Home</NuxtLink>
+              <NuxtLink :to="'/'" :class="linkClass('/')">Home</NuxtLink>
             </li>
             <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded hover:bg-yellow-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent', { 'bg-yellow-400': route.path === '/about' }]"
-                to="/metas">Quiénes somos</NuxtLink>
+              <NuxtLink :to="'/nosotros'" :class="linkClass('/nosotros')">Sobre Nosotros</NuxtLink>
             </li>
             <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded hover:bg-yellow-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent', { 'bg-yellow-400': route.path === '/services' }]"
-                to="/nosotros">Nuestro alcance</NuxtLink>
+              <NuxtLink :to="'/metas'" :class="linkClass('/metas')">Nuestro Alcance</NuxtLink>
             </li>
             <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded hover:bg-yellow-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent', { 'bg-yellow-400': route.path === '/contact' }]"
-                to="/contact">Contáctanos</NuxtLink>
+              <NuxtLink :to="'/contacto'" :class="linkClass('/contacto')">Contáctanos</NuxtLink>
             </li>
             <li>
               <ClientOnly>
-                <UButton class="text-white" :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
-                  color="gray" variant="ghost" aria-label="Theme" @click="isDark = !isDark" />
+                <UButton class="text-black dark:text-white"
+                  :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray" variant="ghost"
+                  aria-label="Theme" @click="toggleDarkMode" />
                 <template #fallback>
                   <div class="w-8 h-8" />
                 </template>
@@ -47,66 +40,47 @@
           </ul>
         </div>
       </div>
-      <div :class="{ 'translate-x-0 ease-out': isOpen, '-translate-x-full ease-in': !isOpen }"
-        class="fixed z-30 inset-y-0 left-0 w-64 transition duration-300 transform bg-green-300 overflow-y-auto md:hidden">
-        <div class="flex items-center justify-between px-4 py-3">
-          <button @click="isOpen = !isOpen" class="md:hidden">
-            <UIcon class="text-2xl text-black dark:text-white" name="i-heroicons-x-mark-20-solid" />
-          </button>
-          <ClientOnly>
-            <UButton class="text-black dark:text-white"
-              :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray" variant="ghost"
-              aria-label="Theme" @click="isDark = !isDark" />
-            <template #fallback>
-              <div class="w-8 h-8" />
-            </template>
-          </ClientOnly>
-        </div>
-        <nav class="px-4 py-2">
-          <ul>
-            <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded md:p-0 font-bold dark:text-white', { 'bg-yellow-400': route.path === '/' }]"
-                to="/" aria-current="page">Home</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded font-bold hover:bg-yellow-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent', { 'bg-yellow-400': route.path === '/about' }]"
-                to="/about">About</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded font-bold hover:bg-yellow-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent', { 'bg-yellow-400': route.path === '/services' }]"
-                to="/services">Services</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded font-bold hover:bg-yellow-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent', { 'bg-yellow-400': route.path === '/pricing' }]"
-                to="/pricing">Pricing</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink
-                :class="['block py-2 px-3 rounded font-bold hover:bg-yellow-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 md:p-0 dark:text-white md:dark:hover:text-green-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent', { 'bg-yellow-400': route.path === '/contact' }]"
-                to="/contact">Contact</NuxtLink>
-            </li>
-            <!-- Aquí van los demás elementos del menú -->
-          </ul>
-        </nav>
-      </div>
     </nav>
+    <div class="pt-20">
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const route = useRoute()
-const colorMode = useColorMode();
+const colorMode = useColorMode()
+const isOpen = ref(false)
+
 const isDark = computed({
   get() {
-    return colorMode.value === "dark";
+    return colorMode.value === 'dark'
   },
-  set() {
-    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
-  },
-});
-const isOpen = ref(false);
+  set(value: any) {
+    colorMode.preference = value ? 'dark' : 'light'
+  }
+})
+
+const linkClass = (path: string) => {
+  return [
+    'block py-2 px-3 rounded hover:bg-yellow-400 dark:hover:bg-transparent md:hover:bg-transparent md:border-0 md:hover:font-bold md:p-0 text-black dark:text-black transition duration-300 ease-in-out ',
+    { 'border-b-4 border-orange-500 dark:border-orange-400': route.path === path }
+  ]
+}
+
+const toggleDarkMode = () => {
+  isDark.value = !isDark.value
+}
 </script>
+
+
+<style scoped>
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+
+nav ul li a.border-b-4 {
+  border-bottom-width: 4px;
+}
+</style>

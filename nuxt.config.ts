@@ -8,5 +8,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxt/ui"]
+  modules: ["@nuxt/ui"],
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
 })
