@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="bg-green-300 border-gray-200 dark:bg-green- md:block">
+    <nav class="bg-yellow-300 border-gray-200 dark:bg-green- md:block">
       <div class="flex flex-wrap items-center justify-between mx-auto p-4">
         <button @click="isOpen = !isOpen" class="md:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
