@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg  transition-colors">
         <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
         <section class="container mx-auto flex flex-col lg:flex-row-reverse items-center">
             <div class="w-full lg:w-1/2">

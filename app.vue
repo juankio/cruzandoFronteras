@@ -1,10 +1,13 @@
+import { UiFooter } from './.nuxt/components';
 <template>
   <div>
     <UiNav />
     <div class="m-20">
       <NuxtPage />
     </div>
+    <UNotifications />
   </div>
+  <UiFooter />
 </template>
 <script setup>
 

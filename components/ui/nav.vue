@@ -8,10 +8,8 @@
           <span class="text-2xl font-semibold text-black  dark:text-black dark:text-shadow-white ml-2">Cruzando
             Fronteras</span>
         </a>
-        <button @click="isOpen = !isOpen" class="md:hidden text-black dark:text-white">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
+        <button @click="isOpen = !isOpen" class="md:hidden text-black dark:text-black">
+          <UIcon class="text-3xl ml-4" name="i-heroicons-bars-3-20-solid" />
         </button>
         <div :class="{ 'block': isOpen, 'hidden': !isOpen }" class="w-full md:flex md:w-auto">
           <ul class="font-medium flex flex-col md:flex-row md:space-x-8">
@@ -29,9 +27,8 @@
             </li>
             <li>
               <ClientOnly>
-                <UButton class="text-black dark:text-white"
-                  :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'" color="gray" variant="ghost"
-                  aria-label="Theme" @click="toggleDarkMode" />
+                <UButton class="text-black dark:text-black " :icon="isDark ? 'i-heroicons-moon' : 'i-heroicons-sun'"
+                  color="black" variant="ghost" aria-label="Theme" @click="toggleDarkMode" />
                 <template #fallback>
                   <div class="w-8 h-8" />
                 </template>

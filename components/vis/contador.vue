@@ -1,11 +1,11 @@
 <template>
-    <div class="bg-gray-100 dark:bg-gray-800 py-12 relative">
+    <div class="bg-white dark:bg-black/0 py-12 relative">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="relative rounded-lg">
                     <div class="absolute top-0 left-0 w-full h-1 bg-yellow-500 dark:bg-yellow-300"></div>
                     <div
-                        class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors fade-in delay-0">
+                        class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg  transition-colors fade-in delay-0">
                         <div class="icon mb-4 text-5xl text-orange-500 dark:text-orange-400">
                             <i class="fas fa-user"></i>
                         </div>
@@ -17,7 +17,7 @@
                 <div class="relative rounded-lg">
                     <div class="absolute top-0 left-0 w-full h-1 bg-yellow-500 dark:bg-yellow-300"></div>
                     <div
-                        class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors fade-in delay-0">
+                        class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg  transition-colors fade-in delay-0">
                         <div class="icon mb-4 text-5xl text-orange-500 dark:text-orange-400">
                             <i class="fas fa-user"></i>
                         </div>
@@ -29,7 +29,7 @@
                 <div class="relative rounded-lg">
                     <div class="absolute top-0 left-0 w-full h-1 bg-yellow-500 dark:bg-yellow-300"></div>
                     <div
-                        class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors fade-in delay-0">
+                        class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg  transition-colors fade-in delay-0">
                         <div class="icon mb-4 text-5xl text-orange-500 dark:text-orange-400">
                             <i class="fas fa-user"></i>
                         </div>
@@ -61,7 +61,7 @@ onMounted(() => {
         setInterval(() => {
             if (beneficiados.value < limit1) beneficiados.value += 1;
             if (canastas.value < limit2) canastas.value += 1;
-        }, 10);
+        }, 70);
 
         setInterval(() => {
             if (municipios.value < limit3) municipios.value += 1;

@@ -1,30 +1,25 @@
 <template>
   <div>
+    <div>
+      <h2
+        class="text-4xl md:text-6xl  text-center font-bold bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 text-transparent bg-clip-text animate-shine">
+        NUESTROS PROYECTOS
+      </h2>
+    </div>
     <div class="grid grid-cols-1 gap-y-16">
       <div v-for="(proyecto, index) in proyectos" :key="index">
         <div class="w-full mb-8">
           <div class="group">
             <h3 class="mt-4 text-2xl text-orange-500 dark:text-orange-400 font-bold">{{ proyecto.titulo }}</h3>
-            <p class="mt-1 text-lg font-medium text-gray-900">
+            <p class="mt-1 text-lg font-medium text-gray-900 dark:text-white">
               {{ proyecto.descripcion }}
             </p>
           </div>
 
           <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
             <div v-for="(imagen, key) in Object.values(proyecto.img)" :key="key"
-              class="w-full h-full shadow-2xl hover:shadow-yellow-500/50 dark:hover:shadow-yellow-300 group">
-              <div @click="isOpen = true">
-                <UModal v-model="isOpen">
-                  <div class="p-4 dark:bg-black">
-                    <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-black dark:bg-white">
-                      <p class="text-orange-500 dark:text-orange-400">{{ imagen.titulo }}</p>
-                      <img :src="imagen.ime" :alt="imagen.titulo" class="h-full w-full object-cover" />
-                    </div>
-                  </div>
-                </UModal>
-
-
-
+              class="w-full h-full shadow-2xl hover:shadow-orange-500 dark:hover:shadow-orange-300 group">
+              <div @click="openModal(imagen)">
                 <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-black dark:bg-white">
                   <img :src="imagen.ime" :alt="imagen.titulo"
                     class="h-full w-full object-fill group-hover:opacity-75" />
@@ -37,15 +32,34 @@
     </div>
 
     <!-- Modal -->
-
-    <!-- Fondo oscurecido -->
-    <div v-if="isOpen" class="fixed inset-0 bg-white dark:bg-black opacity-50 z-50" @click="isOpen = false"></div>
+    <div v-if="isOpen"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/30 bg-opacity-50"
+      @click="isOpen = false">
+      <div class="bg-white/40 dark:bg-black/30 p-6 rounded-lg shadow-2xl w-11/12 max-w-6xl mx-auto relative"
+        @click.stop>
+        <button @click="isOpen = false" class="absolute top-2 right-2 text-black dark:text-white">
+          <UIcon class="text-3xl hover:text-red-500" name="i-heroicons-x-circle-16-solid" />
+        </button>
+        <h2 class="text-orange-500 dark:text-orange-400 text-center font-bold text-4xl mb-4">{{ selectedImage.titulo
+          }}
+        </h2>
+        <img :src="selectedImage.ime" :alt="selectedImage.titulo" class="h-full w-full object-cover" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 
 const isOpen = ref(false)
+const selectedImage = ref({})
+
+const openModal = (image) => {
+  selectedImage.value = image
+  isOpen.value = true
+}
+
 const proyectos = ref([
   {
     titulo: "MODALIDAD FAMILIAR",
@@ -87,5 +101,21 @@ const proyectos = ref([
       },
     },
   },
-]);
+])
 </script>
+<style>
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-shine {
+  background-size: 200%;
+  animation: shine 6s linear infinite;
+}
+</style>
