@@ -5,7 +5,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Misión -->
                     <div
-                        class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transition-colors fade-in delay-0">
+                        class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
                         <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
                         <h3 class="text-2xl font-semibold mb-4 text-orange-500 dark:text-orange-400">Nuestra Misión</h3>
                         <p class="text-base text-gray-700 dark:text-gray-300">
@@ -22,7 +22,7 @@
                     </div>
                     <!-- Visión -->
                     <div
-                        class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transition-colors fade-in delay-2">
+                        class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
                         <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
                         <h3 class="text-2xl font-semibold mb-4 text-orange-500 dark:text-orange-400">Nuestra Visión</h3>
                         <p class="text-base text-gray-700 dark:text-gray-300">
@@ -43,7 +43,7 @@
                     </div>
                     <!-- Valores -->
                     <div
-                        class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transition-colors fade-in delay-4">
+                        class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
                         <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
                         <h3 class="text-2xl font-semibold mb-4 text-orange-500 dark:text-orange-400">Áreas de Impacto
                         </h3>
@@ -89,7 +89,4 @@
 </template>
 
 <script setup>
-
 </script>
-
-<style scoped></style>
