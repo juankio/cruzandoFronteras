@@ -5,7 +5,6 @@
                 class="underline decoration-orange-500 dark:decoration-orange-400 decoration-4 font-bold text-black dark:text-white">{{
             word }}</span>
         </UTooltip>
-        <span class="absolute left-0 bottom-0 w-full h-0.5 bg-orange-500 dark:bg-orange-400"></span>
     </span>
 </template>
 
