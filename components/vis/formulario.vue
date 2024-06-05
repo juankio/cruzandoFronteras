@@ -24,10 +24,11 @@
                         <UTextarea size="lg" class="text-start w-full" color="orange" type="text" :trailing="false"
                             placeholder="Mensaje" v-model="state.message" />
                     </UFormGroup>
-                    <UButton type="submit" label="Show toast" @click="toast.add({ title: 'Hello world!' })"
-                        class="bg-orange-500 dark:bg-orange-400 text-white px-4 py-2 rounded-lg w-full hover:bg-orange-600 dark:hover:bg-orange-500">
-                        Enviar
-                    </UButton>
+
+                    <UButton icon="i-heroicons-paper-airplane-solid" size="sm" color="primary" variant="solid"
+                        label="Enviar" :trailing="false" type="submit"
+                        class="bg-orange-500 dark:bg-orange-400 text-white text-center px-4 py-2 rounded-lg  hover:bg-orange-600 dark:hover:bg-orange-500"
+                        block />
                 </UForm>
             </div>
             <div class="w-full md:w-1/2 pl-0 md:pl-4">
@@ -74,14 +75,17 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         emailjs.send('service_dw37qv8', 'template_avh1skb', templateParams, '35nWX-jg8bKGUhQeo')
             .then(response => {
                 console.log('SUCCESS!', response.status, response.text)
+                toast.add({ title: 'Correo enviado exitosamente' })
                 state.name = ''
                 state.email = ''
                 state.phone = ''
                 state.message = ''
             }, error => {
                 console.log('FAILED...', error)
+                toast.add({ title: error })
             })
     } catch (error) {
+        toast.add({ title: error })
         console.error("Error de validación:", error)
     }
 }

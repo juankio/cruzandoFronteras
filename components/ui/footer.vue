@@ -6,17 +6,17 @@
                 class="container mx-auto px-4 flex flex-col items-center md:flex-row md:justify-between space-y-4 md:space-y-0">
                 <div class="text-center md:text-left">
                     <p class="font-bold mb-2">Fundación Cruzando Fronteras</p>
-                    <p>Calle 14 Sur 48B - 61 B/Serramonte 1 Ca 6A</p>
+                    <p>Calle 48 33 - 53 Caudal</p>
                     <p>Villavicencio, Meta</p>
                     <p>Colombia</p>
                 </div>
                 <div class="text-center md:text-left">
                     <p class="font-bold mb-2">Contact Information</p>
-                    <p><a href="tel:+573167641291">+57 (316) 764-1291</a></p>
-                    <p><a href="mailto:FundaciónCruzandoFronteras@gmail.com">FundaciónCruzandoFronteras@gmail.com</a>
+                    <p><a href="tel:+573167641291">+57 (320) 442-3676</a></p>
+                    <p><a href="mailto:fcruzandoFronteras@gmail.com">fcruzandoFronteras@gmail.com</a>
                     </p>
-                    <p><a href="https://www.FundaciónCruzandoFronteras.com"
-                            target="_blank">www.FundaciónCruzandoFronteras.com</a></p>
+                    <p><a href="https://cruzando-fronteras.vercel.app/"
+                            target="_blank">www.cruzando-fronteras.vercel.app</a></p>
                 </div>
                 <div class="text-center md:text-left">
                     <p class="font-bold mb-2">Follow Us</p>
