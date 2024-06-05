@@ -2,7 +2,6 @@
     <div class="flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 p-4 md:p-0">
         <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md w-full flex flex-col md:flex-row">
             <div class="w-full md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0">
-                <h2 class="text-3xl md:text-6xl text-center font-bold mb-4">Contáctanos</h2>
                 <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
                     <UFormGroup name="name" class="mb-4">
                         <label class="block text-gray-700 dark:text-gray-300">Nombre</label>
