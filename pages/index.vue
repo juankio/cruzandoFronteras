@@ -2,7 +2,7 @@
   <div>
     <div>
       <h2
-        class="text-4xl md:text-6xl  text-center font-bold bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 text-transparent bg-clip-text animate-shine">
+        class="text-4xl md:text-6xl text-center font-bold bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 text-transparent bg-clip-text animate-shine">
         NUESTROS PROYECTOS
       </h2>
     </div>
@@ -35,15 +35,15 @@
     <div v-if="isOpen"
       class="fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/30 bg-opacity-50"
       @click="isOpen = false">
-      <div class="bg-white/40 dark:bg-black/30 p-6 rounded-lg shadow-2xl w-11/12 max-w-6xl mx-auto relative"
-        @click.stop>
+      <div class="bg-white/40 dark:bg-black/30 p-6 rounded-lg shadow-2xl w-50 max-w-6xl mx-auto relative" @click.stop>
         <button @click="isOpen = false" class="absolute top-2 right-2 text-black dark:text-white">
           <UIcon class="text-3xl hover:text-red-500" name="i-heroicons-x-circle-16-solid" />
         </button>
-        <h2 class="text-orange-500 dark:text-orange-400 text-center font-bold text-4xl mb-4">{{ selectedImage.titulo
-          }}
+        <h2 class="text-orange-500 dark:text-orange-400 text-center font-bold text-4xl mb-4">{{ selectedImage.titulo }}
         </h2>
-        <img :src="selectedImage.ime" :alt="selectedImage.titulo" class="h-full w-full object-cover" />
+        <div class="flex justify-center">
+          <img :src="selectedImage.ime" :alt="selectedImage.titulo" class="max-h-screen max-w-full object-contain" />
+        </div>
       </div>
     </div>
   </div>
@@ -103,6 +103,7 @@ const proyectos = ref([
   },
 ])
 </script>
+
 <style>
 @keyframes shine {
   0% {
