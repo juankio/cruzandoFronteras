@@ -1,4 +1,3 @@
-import { UiFooter } from './.nuxt/components';
 <template>
   <div>
     <UiNav />
