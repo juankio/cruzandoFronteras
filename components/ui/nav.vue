@@ -5,7 +5,7 @@
       <div class="flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center">
           <img src="/s.png" class="h-10 w-10" alt="Cruzando Fronteras Logo" />
-          <span class="text-2xl font-semibold text-black dark:text-black dark:text-shadow-white ml-2">Cruzando
+          <span class="text-2xl  text-black dark:text-black dark:text-shadow-white ml-2">Cruzando
             Fronteras</span>
         </a>
         <button @click="isOpen = !isOpen" class="md:hidden text-black dark:text-black">
@@ -79,7 +79,7 @@ const isDark = computed({
 
 const linkClass = (path: string) => {
   return [
-    'block py-2 px-3 rounded hover:bg-yellow-400 dark:hover:bg-yellow-400 md:hover:bg-transparent md:border-0 md:hover:font-bold md:p-0 text-black dark:text-black transition duration-300 ease-in-out',
+    'block py-2 px-3 rounded   md:hover:bg-transparent md:border-0 md:hover:font-bold md:p-0 text-black dark:text-black transition duration-300 ease-in-out',
     { 'border-b-4 border-orange-500 dark:border-orange-400': route.path === path }
   ];
 };

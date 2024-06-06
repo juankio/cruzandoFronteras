@@ -12,6 +12,12 @@
 
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+body {
+  font-family: 'Permanent Marker', sans-serif;
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;

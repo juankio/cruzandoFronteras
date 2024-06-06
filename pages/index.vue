@@ -2,7 +2,7 @@
   <div>
     <div>
       <h2
-        class="text-4xl md:text-6xl text-center font-bold bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 text-transparent bg-clip-text animate-shine">
+        class="text-4xl md:text-6xl text-center font-bold bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 text-transparent bg-clip-text animate-shine font-sans">
         NUESTROS PROYECTOS
       </h2>
     </div>
@@ -10,8 +10,9 @@
       <div v-for="(proyecto, index) in proyectos" :key="index">
         <div class="w-full mb-8">
           <div class="group">
-            <h3 class="mt-4 text-2xl text-orange-500 dark:text-orange-400 font-bold">{{ proyecto.titulo }}</h3>
-            <p class="mt-1 text-lg font-medium text-gray-900 dark:text-white">
+            <h3 class="mt-4 text-2xl text-orange-500 dark:text-orange-400 font-bold font-sans">{{ proyecto.titulo }}
+            </h3>
+            <p class="mt-1 text-lg font-medium text-gray-900 dark:text-white font-sans">
               {{ proyecto.descripcion }}
             </p>
           </div>
@@ -104,7 +105,13 @@ const proyectos = ref([
 ])
 </script>
 
-<style>
+<style scoped>
+.text-orange-500 {
+  color: #ff8c00;
+  font-weight: 700;
+  font-family: 'Permanent Marker', sans-serif;
+}
+
 @keyframes shine {
   0% {
     background-position: 200% center;
