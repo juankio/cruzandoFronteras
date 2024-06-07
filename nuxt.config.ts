@@ -8,7 +8,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxt/ui"],
+  modules: ["@nuxt/ui", '@nuxt/image-edge'],
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/djcirz1cc/image/fetch/'
+    }
+  },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
