@@ -13,7 +13,7 @@
       </p>
     </div>
     <div v-if="error" class="text-red-500 text-center">
-      <p>Error fetching images: {{ error.message }}</p>
+      <p>Error fetching images: {{ error }}</p>
     </div>
     <div v-else-if="!images.length" class="text-center">
       <p>Loading...</p>
