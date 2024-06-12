@@ -1,8 +1,13 @@
-// server/api/fetchImages.js
 export default defineEventHandler(async (event) => {
-  const cloudinaryUrl = `https://api.cloudinary.com/v1_1/djcirz1cc/resources/image`;
-  const username = '277212769995639';
-  const password = '0_ghKfJ-Ms_VArdhBxByPoeAlPU';
+  const config = useRuntimeConfig();
+  const cloudinaryUrl = config.cloudinaryUrl;
+  const username = config.cloudinaryUser;
+  const password = config.cloudinaryPassword;
+ 
+  
+  if (!cloudinaryUrl || !username || !password) {
+    throw new Error('Missing Cloudinary configuration');
+  }
 
   try {
     const response = await fetch(`${cloudinaryUrl}?type=upload&prefix=proyectos/`, {

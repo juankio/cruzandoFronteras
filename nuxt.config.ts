@@ -17,5 +17,10 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' }
   },
+  runtimeConfig: {
+    cloudinaryUrl: process.env.CLOUDINARY,
+    cloudinaryUser: process.env.USERNA,
+    cloudinaryPassword: process.env.PASSWORD,
+  },
 
 })
