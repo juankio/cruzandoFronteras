@@ -6,27 +6,22 @@
         NUESTROS PROYECTOS
       </h2>
     </div>
-    <div>
-      <h3 class="mt-4 text-2xl text-orange-500 dark:text-orange-400 font-bold font-sans">MODALIDAD FAMILIAR</h3>
-      <p class="mt-1 text-lg font-medium text-gray-900 dark:text-white font-sans">
-        Descripción del Proyecto de Yopal.
-      </p>
-    </div>
+
     <div v-if="error" class="text-red-500 text-center">
       <p>Error fetching images: {{ error }}</p>
     </div>
-    <div v-else-if="!images.length" class="text-center">
+    <div v-else-if="!Object.keys(imagesByFolder).length" class="text-center">
       <p>Loading...</p>
     </div>
-    <div v-else class="grid grid-cols-1 gap-y-16">
-      <div class="w-full mb-8">
+    <div v-else>
+      <div v-for="(images, folder) in imagesByFolder" :key="folder">
+        <h3 class="text-2xl md:text-4xl font-bold mb-16 text-orange-500 dark:text-orange-400 mt-16 ">{{ folder }}</h3>
         <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
-          <div v-for="(imagen, key) in images" :key="key"
-            class="w-full h-full shadow-2xl hover:shadow-orange-500 dark:hover:shadow-orange-300 group">
-            <div @click="openModal(imagen)">
+          <div v-for="(image, key) in images" :key="key"
+            class="relative rounded-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
+            <div @click="openModal(image)">
               <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-black dark:bg-white">
-                <NuxtImg :src="imagen.secure_url" :alt="imagen.public_id"
-                  class="h-full w-full object-fill group-hover:opacity-75" />
+                <NuxtImg :src="image.secure_url" :alt="image.public_id" class="h-full w-full object-fill" />
               </div>
             </div>
           </div>
@@ -56,14 +51,14 @@
 <script setup>
 
 
-const isOpen = ref(false)
-const selectedImage = ref({})
-const { data: images, error } = await useFetch('/api/fetchImages')
+const isOpen = ref(false);
+const selectedImage = ref({});
+const { data: imagesByFolder, error } = await useFetch('/api/fetchImages');
 
 const openModal = (image) => {
-  selectedImage.value = image
-  isOpen.value = true
-}
+  selectedImage.value = image;
+  isOpen.value = true;
+};
 </script>
 
 <style scoped>

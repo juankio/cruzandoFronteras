@@ -1,10 +1,11 @@
+// server/api/fetchImages.js
 export default defineEventHandler(async (event) => {
   const cloudinaryUrl = `https://api.cloudinary.com/v1_1/djcirz1cc/resources/image`;
   const username = '277212769995639';
   const password = '0_ghKfJ-Ms_VArdhBxByPoeAlPU';
 
   try {
-    const response = await fetch(`${cloudinaryUrl}?type=upload&prefix=niños/`, {
+    const response = await fetch(`${cloudinaryUrl}?type=upload&prefix=proyectos/`, {
       headers: {
         'Authorization': 'Basic ' + Buffer.from(username + ':' + password).toString('base64')
       }
@@ -16,15 +17,20 @@ export default defineEventHandler(async (event) => {
 
     const data = await response.json();
 
-    // Filtrar y mapear solo los datos necesarios
-    const images = data.resources.map((image) => ({
-      secure_url: image.secure_url,
-      public_id: image.public_id,
-    }));
+    // Filtrar y mapear solo los datos necesarios, organizándolos por carpeta
+    const imagesByFolder = data.resources.reduce((acc, image) => {
+      const folder = image.folder.split('/')[1];
+      if (!acc[folder]) acc[folder] = [];
+      acc[folder].push({
+        secure_url: image.secure_url,
+        public_id: image.public_id,
+      });
+      return acc;
+    }, {});
 
-    return images;
+    return imagesByFolder;
   } catch (error) {
     console.error('Error fetching images from Cloudinary', error.message);
-    return [];
+    return { error: error.message };
   }
 });

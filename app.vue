@@ -1,16 +1,28 @@
+<!-- app.vue -->
 <template>
   <div>
     <UiNav />
+    <UiCarusel />
     <div class="m-20">
       <NuxtPage />
     </div>
     <UNotifications />
+    <UiFooter />
   </div>
-  <UiFooter />
 </template>
+
 <script setup>
 
+const router = useRouter()
+const route = useRoute()
+
+onBeforeMount(() => {
+  if (route.matched.length === 0) {
+    router.replace('/404')
+  }
+})
 </script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
