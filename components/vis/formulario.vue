@@ -50,10 +50,10 @@ import type { FormSubmitEvent } from '#ui/types'
 const toast = useToast()
 
 const schema = object({
-    name: string().required('Nombre es requerido'),
-    email: string().email('Correo electrónico inválido').required('Correo electrónico es requerido'),
-    phone: string().required('Teléfono es requerido'),
-    message: string().required('Mensaje es requerido')
+    name: string().required('Nombre es obligatorio'),
+    email: string().email('Correo electrónico inválido').required('Correo electrónico es obligatorio'),
+    phone: string().required('Teléfono es obligatorio'),
+    message: string().required('Mensaje es obligatorio')
 })
 
 type Schema = InferType<typeof schema>
