@@ -1,5 +1,7 @@
 <template>
-    <div class="flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 p-4 md:p-0">
+    <div
+        class="relative flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 p-4 md:p-0 transition-colors transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
+        <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
         <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md w-full flex flex-col md:flex-row">
             <div class="w-full md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0">
                 <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
@@ -44,7 +46,7 @@
 <script setup lang="ts">
 import { object, string, type InferType } from 'yup'
 import emailjs from 'emailjs-com'
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, onMounted } from 'vue'
 import type { FormSubmitEvent } from '#ui/types'
 
 const toast = useToast()
@@ -103,7 +105,6 @@ async function onClickSubmit() {
     await onSubmit({ data: state })
 }
 
-
 const imageUrl = ref('');
 
 const { data: items, pending, error } = await useFetch('/api/fetchContactanos');
@@ -120,6 +121,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.top-line {
+    transition: width 0.5s;
+}
+
+.hover\\:animate-fly:hover {
+    animation: fly 0.5s ease-in-out forwards;
+}
+
 @keyframes fly {
     0% {
         transform: translateX(0)
@@ -132,9 +141,5 @@ onMounted(() => {
     100% {
         transform: translateX(100px)
     }
-}
-
-.hover\\:animate-fly:hover {
-    animation: fly 0.5s ease-in-out forwards
 }
 </style>
