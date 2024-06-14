@@ -27,22 +27,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.carousel-image {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    max-height: 400px;
-    /* Ajusta esta altura según tu necesidad */
-    object-fit: contain;
-}
-
-.carousel-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
 .loading {
     text-align: center;
     font-size: 1.5em;

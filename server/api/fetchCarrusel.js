@@ -1,11 +1,10 @@
-// server/api/fetchCarrusel.js
+
 export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig();
     const cloudinaryUrl = config.cloudinaryUrl;
     const username = config.cloudinaryUser;
     const password = config.cloudinaryPassword;
   
-    console.log('Config:', { cloudinaryUrl, username, password });
   
     if (!cloudinaryUrl || !username || !password) {
       throw new Error('Missing Cloudinary configuration');
@@ -18,8 +17,6 @@ export default defineEventHandler(async (event) => {
         }
       });
   
-      console.log('Cloudinary response status:', response.status);
-      console.log('Cloudinary response statusText:', response.statusText);
   
       if (!response.ok) {
         throw new Error(`Error fetching images: ${response.statusText}`);
@@ -27,10 +24,8 @@ export default defineEventHandler(async (event) => {
   
       const data = await response.json();
   
-      console.log('Cloudinary response data:', data);
   
       if (!data.resources || data.resources.length === 0) {
-        console.log('No images found in Cloudinary response');
         return [];
       }
   
@@ -39,11 +34,9 @@ export default defineEventHandler(async (event) => {
         public_id: image.public_id,
       }));
   
-      console.log('Fetched images:', images);
   
       return images;
     } catch (error) {
-      console.error('Error fetching images from Cloudinary', error.message);
       return { error: error.message };
     }
   });

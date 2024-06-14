@@ -3,7 +3,6 @@ export default defineEventHandler(async (event) => {
   const cloudinaryUrl = config.cloudinaryUrl;
   const username = config.cloudinaryUser;
   const password = config.cloudinaryPassword;
- 
   
   if (!cloudinaryUrl || !username || !password) {
     throw new Error('Missing Cloudinary configuration');
@@ -23,15 +22,30 @@ export default defineEventHandler(async (event) => {
     const data = await response.json();
 
     // Filtrar y mapear solo los datos necesarios, organizándolos por carpeta
-    const imagesByFolder = data.resources.reduce((acc, image) => {
-      const folder = image.folder.split('/')[1];
+    const imagesByFolder = await data.resources.reduce(async (accPromise, resource) => {
+      const acc = await accPromise;
+      const folder = resource.folder.split('/')[1];
       if (!acc[folder]) acc[folder] = [];
-      acc[folder].push({
-        secure_url: image.secure_url,
-        public_id: image.public_id,
-      });
+      
+      // Verifica si el archivo es un texto
+      if (resource.format === 'txt') {
+        // Obtener el contenido del archivo de texto
+        const textResponse = await fetch(resource.secure_url);
+        const textContent = await textResponse.text();
+        
+        acc[folder].push({
+          secure_url: resource.secure_url,
+          public_id: resource.public_id,
+          content: textContent, // Agrega el contenido del archivo de texto
+        });
+      } else {
+        acc[folder].push({
+          secure_url: resource.secure_url,
+          public_id: resource.public_id,
+        });
+      }
       return acc;
-    }, {});
+    }, Promise.resolve({}));
 
     return imagesByFolder;
   } catch (error) {
