@@ -12,7 +12,6 @@
 </template>
 
 <script setup>
-
 const router = useRouter()
 const route = useRoute()
 
@@ -27,8 +26,7 @@ useSeoMeta({
   ogTitle: 'Fundación Cruzando Fronteras',
   description: 'Fundación Cruzando Fronteras ofrece servicios de educación, recreación, bienestar, nutrición y salud a comunidades vulnerables en Colombia, promoviendo la convivencia ciudadana y el progreso comunitario.',
   ogDescription: 'Mejoramiento Integral de la Calidad de Vida en Colombia a través de la educación, recreación, bienestar, nutrición y salud.',
-  ogImage: '/s.pgn',
-  twitterCard: 'summary_large_image',
+  ogImage: '/s.png',
 })
 </script>
 

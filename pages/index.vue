@@ -53,6 +53,14 @@ const isOpen = ref(false);
 const selectedImage = ref({});
 const { data: imagesByFolder, error } = await useFetch('/api/fetchImages');
 
+useHead({
+  title: 'Fundación Cruzando Fronteras - Inicio',
+  meta: [
+    { name: 'description', content: 'Fundación Cruzando Fronteras ofrece servicios de educación, recreación, bienestar, nutrición y salud a comunidades vulnerables en Colombia.' },
+    { name: 'keywords', content: 'Fundación, Cruzando Fronteras, bienestar familiar, educación, salud, nutrición, recreación' }
+  ]
+})
+
 const openModal = (image) => {
   selectedImage.value = image;
   isOpen.value = true;

@@ -9,7 +9,15 @@
         </div>
     </div>
 </template>
-
+<script setup>
+useHead({
+    title: 'Fundación Cruzando Fronteras - Contacto',
+    meta: [
+        { name: 'description', content: 'Ponte en contacto con Fundación Cruzando Fronteras para más información sobre nuestros servicios y cómo puedes contribuir.' },
+        { name: 'keywords', content: 'Fundación, Cruzando Fronteras, contacto, ayuda, contribución' }
+    ]
+})
+</script>
 <style scoped>
 .animate-shine {
     animation: shine 2s linear infinite;

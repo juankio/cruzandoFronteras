@@ -8,7 +8,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@nuxt/ui", '@nuxt/image-edge'],
+  modules: ["@nuxt/ui", '@nuxt/image-edge', '@nuxtjs/sitemap'],
   image: {
     cloudinary: {
       baseURL: 'https://res.cloudinary.com/djcirz1cc/image/fetch/'
@@ -26,6 +26,15 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/x-icon', href: '/s.png' }
       ]
     }
+  },
+  sitemap: {
+    hostname: 'https://juansupelano.me/',
+    gzip: true,
+    routes: [
+      '/',
+      '/contacto',
+      '/nosotros',
+    ]
   },
   runtimeConfig: {
     cloudinaryUrl: process.env.CLOUDINARY,

@@ -36,7 +36,13 @@
 </template>
 
 <script setup>
-
+useHead({
+    title: 'Fundación Cruzando Fronteras - Nosotros',
+    meta: [
+        { name: 'description', content: 'Conoce más sobre Fundación Cruzando Fronteras, nuestra historia, misión y equipo.' },
+        { name: 'keywords', content: 'Fundación, Cruzando Fronteras, nosotros, misión, equipo' }
+    ]
+})
 </script>
 
 <style scoped></style>
