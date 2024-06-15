@@ -15,12 +15,20 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
+    pageTransition: { name: 'page', mode: 'out-in' },
+    head: {
+      title: 'Fundación Cruzando Fronteras',
+      meta: [
+        { name: 'description', content: 'Fundación Cruzando Fronteras ofrece servicios de educación, recreación, bienestar, nutrición y salud a comunidades vulnerables en Colombia, promoviendo la convivencia ciudadana y el progreso comunitario.' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/s.png' }
+      ]
+    }
   },
   runtimeConfig: {
     cloudinaryUrl: process.env.CLOUDINARY,
     cloudinaryUser: process.env.USERNA,
     cloudinaryPassword: process.env.PASSWORD,
   },
-
 })
