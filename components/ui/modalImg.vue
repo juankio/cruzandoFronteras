@@ -34,5 +34,4 @@ const emit = defineEmits(['close'])
 const closeModal = () => {
     emit('close')
 }
-console.log('sapa', props.selectedImage);
 </script>

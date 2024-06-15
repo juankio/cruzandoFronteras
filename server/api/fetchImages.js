@@ -52,16 +52,14 @@ export default defineEventHandler(async (event) => {
 
         if (metadataResponse.ok) {
           const metadata = await metadataResponse.json();
-          console.log(`Metadata for ${resource.public_id}:`, JSON.stringify(metadata, null, 2)); // Log de la metadata obtenida
+          
           imageData.metadata = metadata; // Agregar la metadata completa
 
           // Si la imagen tiene una descripción, asignarla a la carpeta
           if (metadata.context && metadata.context.custom && metadata.context.custom.alt) {
             acc[folder].description = metadata.context.custom.alt;
           }
-        } else {
-          console.log(`Failed to fetch metadata for ${resource.public_id}: ${metadataResponse.statusText}`);
-        }
+        } 
       }
 
       acc[folder].images.push(imageData);

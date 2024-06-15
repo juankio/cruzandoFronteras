@@ -86,7 +86,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         state.message = ''
     } catch (error) {
         toast.add({ title: error.message })
-        console.error('Error de validación:', error)
     } finally {
         isLoading.value = false
     }
