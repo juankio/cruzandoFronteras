@@ -22,30 +22,13 @@ onBeforeMount(() => {
   }
 })
 
-useHead({
+useSeoMeta({
   title: 'Fundación Cruzando Fronteras - Mejoramiento Integral de la Calidad de Vida en Colombia',
-  meta: [
-    {
-      name: 'description',
-      content: 'Fundación Cruzando Fronteras ofrece servicios de educación, recreación, bienestar, nutrición y salud a comunidades vulnerables en Colombia, promoviendo la convivencia ciudadana y el progreso comunitario.'
-    },
-    {
-      property: 'og:title',
-      content: 'Fundación Cruzando Fronteras'
-    },
-    {
-      property: 'og:description',
-      content: 'Mejoramiento Integral de la Calidad de Vida en Colombia a través de la educación, recreación, bienestar, nutrición y salud.'
-    },
-    {
-      property: 'og:image',
-      content: '/s.png'
-    },
-    {
-      property: 'og:url',
-      content: 'https://cruzando-fronteras.vercel.app'
-    },
-  ],
+  ogTitle: 'Fundación Cruzando Fronteras',
+  description: 'Fundación Cruzando Fronteras ofrece servicios de educación, recreación, bienestar, nutrición y salud a comunidades vulnerables en Colombia, promoviendo la convivencia ciudadana y el progreso comunitario.',
+  ogDescription: 'Mejoramiento Integral de la Calidad de Vida en Colombia a través de la educación, recreación, bienestar, nutrición y salud.',
+  ogImage: '/s.pgn',
+  twitterCard: 'summary_large_image',
 })
 </script>
 
