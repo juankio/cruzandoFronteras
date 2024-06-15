@@ -6,8 +6,6 @@
         NUESTROS PROYECTOS
       </h2>
     </div>
-    php
-    Copiar código
     <div v-if="error" class="text-red-500 text-center">
       <p>Error fetching images: {{ error }}</p>
     </div>
