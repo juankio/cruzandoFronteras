@@ -6,7 +6,7 @@
                 ¿Quienes Somos?
             </h2>
         </div>
-        <div>
+        <div class="w-full max-w-7xl mx-auto">
             <VisFundacion />
         </div>
         <div class="text-center m-10">

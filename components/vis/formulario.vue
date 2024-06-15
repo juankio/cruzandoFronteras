@@ -2,43 +2,36 @@
     <div
         class="relative flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 p-4 md:p-0 transition-colors transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
         <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
-        <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md w-full flex flex-col md:flex-row">
-            <div class="w-full md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0">
-                <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
-                    <UFormGroup name="name" class="mb-4">
-                        <label class="block text-gray-700 dark:text-gray-300">Nombre</label>
-                        <UInput icon="i-heroicons-user-16-solid" size="lg" class="text-start w-full" color="orange"
-                            type="text" :trailing="false" placeholder="Ej. Juan Pérez" v-model="state.name" />
-                    </UFormGroup>
-                    <UFormGroup name="email" class="mb-4">
-                        <label class="block text-gray-700 dark:text-gray-300">Correo electrónico</label>
-                        <UInput icon="i-heroicons-envelope-16-solid" size="lg" class="text-start w-full" color="orange"
-                            type="email" :trailing="false" placeholder="Ej. juan.perez@example.com"
-                            v-model="state.email" />
-                    </UFormGroup>
-                    <UFormGroup name="phone" class="mb-4">
-                        <label class="block text-gray-700 dark:text-gray-300">Teléfono</label>
-                        <UInput icon="i-heroicons-phone-20-solid" size="lg" class="text-start w-full" color="orange"
-                            type="tel" :trailing="false" placeholder="Ej. 312-456-789" v-model="state.phone" />
-                    </UFormGroup>
-                    <UFormGroup name="message" class="mb-4">
-                        <label class="block text-gray-700 dark:text-gray-300">Mensaje</label>
-                        <UTextarea size="lg" class="text-start w-full" color="orange" type="text" :trailing="false"
-                            placeholder="Ej. Me gusta lo que hace la fundacion Cruzando fronteras"
-                            v-model="state.message" />
-                    </UFormGroup>
+        <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md w-full">
+            <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
+                <UFormGroup name="name" class="mb-4">
+                    <label class="block text-gray-700 dark:text-gray-300">Nombre</label>
+                    <UInput icon="i-heroicons-user-16-solid" size="lg" class="text-start w-full" color="orange"
+                        type="text" :trailing="false" placeholder="Ej. Juan Pérez" v-model="state.name" />
+                </UFormGroup>
+                <UFormGroup name="email" class="mb-4">
+                    <label class="block text-gray-700 dark:text-gray-300">Correo electrónico</label>
+                    <UInput icon="i-heroicons-envelope-16-solid" size="lg" class="text-start w-full" color="orange"
+                        type="email" :trailing="false" placeholder="Ej. juan.perez@example.com" v-model="state.email" />
+                </UFormGroup>
+                <UFormGroup name="phone" class="mb-4">
+                    <label class="block text-gray-700 dark:text-gray-300">Teléfono</label>
+                    <UInput icon="i-heroicons-phone-20-solid" size="lg" class="text-start w-full" color="orange"
+                        type="tel" :trailing="false" placeholder="Ej. 312-456-789" v-model="state.phone" />
+                </UFormGroup>
+                <UFormGroup name="message" class="mb-4">
+                    <label class="block text-gray-700 dark:text-gray-300">Mensaje</label>
+                    <UTextarea size="lg" class="text-start w-full" color="orange" type="text" :trailing="false"
+                        placeholder="Ej. Me gusta lo que hace la fundacion Cruzando fronteras"
+                        v-model="state.message" />
+                </UFormGroup>
 
-                    <UButton :disabled="!isFormValid || isLoading" :loading="isLoading"
-                        icon="i-heroicons-paper-airplane-solid" size="sm" color="primary" variant="solid"
-                        :label="isLoading ? 'Enviando...' : 'Enviar'" :trailing="false" @click="onClickSubmit"
-                        class="bg-orange-500 dark:bg-orange-400 text-white text-center px-4 py-2 rounded-lg hover:bg-orange-600 dark:hover:bg-orange-500 hover:animate-fly"
-                        block />
-                </UForm>
-            </div>
-            <div class="w-full md:w-1/2 pl-0 md:pl-4">
-                <nuxt-img :src="imageUrl" alt="Fundacion Cruzando Fronteras"
-                    class="rounded-lg text-center justify-center shadow-md w-full" />
-            </div>
+                <UButton :disabled="!isFormValid || isLoading" :loading="isLoading"
+                    icon="i-heroicons-paper-airplane-solid" size="sm" color="primary" variant="solid"
+                    :label="isLoading ? 'Enviando...' : 'Enviar'" :trailing="false" @click="onClickSubmit"
+                    class="bg-orange-500 dark:bg-orange-400 text-white text-center px-4 py-2 rounded-lg hover:bg-orange-600 dark:hover:bg-orange-500 hover:animate-fly"
+                    block />
+            </UForm>
         </div>
     </div>
 </template>
@@ -104,20 +97,6 @@ async function onClickSubmit() {
     await new Promise(resolve => setTimeout(resolve, 300))
     await onSubmit({ data: state })
 }
-
-const imageUrl = ref('');
-
-const { data: items, pending, error } = await useFetch('/api/fetchContactanos');
-
-if (items.value && items.value.secure_url) {
-    imageUrl.value = items.value.secure_url;
-}
-
-onMounted(() => {
-    setInterval(() => {
-        if (!imageUrl.value) return;
-    }, 3000);
-});
 </script>
 
 <style scoped>
