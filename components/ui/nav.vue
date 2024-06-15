@@ -5,14 +5,13 @@
       <div class="flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center">
           <img src="/s.png" class="h-10 w-10" alt="Cruzando Fronteras Logo" />
-          <span class="text-2xl  text-black dark:text-black dark:text-shadow-white ml-2">Cruzando
-            Fronteras</span>
+          <span class="text-2xl text-black dark:text-black dark:text-shadow-white ml-2">Cruzando Fronteras</span>
         </a>
-        <button @click="isOpen = !isOpen" class="md:hidden text-black dark:text-black">
+        <button @click="toggleMenu" class="md:hidden text-black dark:text-black mobile-menu-button">
           <UIcon class="text-3xl ml-4" name="i-heroicons-bars-3-20-solid" />
         </button>
         <transition name="menu">
-          <div v-show="isOpen" class="w-full md:hidden  transition-menu">
+          <div v-show="isOpen" ref="menu" class="w-full md:hidden transition-menu">
             <ul class="font-medium flex flex-col md:flex-row md:space-x-8 p-4 rounded-md">
               <li>
                 <NuxtLink :to="'/'" :class="linkClass('/')">Inicio</NuxtLink>
@@ -79,7 +78,7 @@ const isDark = computed({
 
 const linkClass = (path: string) => {
   return [
-    'block py-2 px-3 rounded   md:hover:bg-transparent md:border-0 md:hover:font-bold md:p-0 text-black dark:text-black transition duration-300 ease-in-out',
+    'block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:font-bold md:p-0 text-black dark:text-black transition duration-300 ease-in-out',
     { 'border-b-4 border-orange-500 dark:border-orange-400': route.path === path }
   ];
 };
@@ -87,6 +86,26 @@ const linkClass = (path: string) => {
 const toggleDarkMode = () => {
   isDark.value = !isDark.value;
 };
+
+const handleClickOutside = (event: MouseEvent) => {
+  const menu = document.querySelector('.transition-menu');
+  const button = document.querySelector('.mobile-menu-button');
+  if (menu && button && !menu.contains(event.target as Node) && !button.contains(event.target as Node)) {
+    isOpen.value = false;
+  }
+};
+
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value;
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
 </script>
 
 <style scoped>

@@ -39,7 +39,6 @@
 <script setup lang="ts">
 import { object, string, type InferType } from 'yup'
 import emailjs from 'emailjs-com'
-import { computed, reactive, ref, onMounted } from 'vue'
 import type { FormSubmitEvent } from '#ui/types'
 
 const toast = useToast()

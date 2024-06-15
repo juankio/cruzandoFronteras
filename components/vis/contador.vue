@@ -47,9 +47,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-
-// Variables de contador con valores iniciales y límites
 const beneficiados = ref(0);
 const canastas = ref(0);
 const municipios = ref(0);
@@ -60,7 +57,6 @@ const limit3 = 15;
 
 onMounted(() => {
     if (process.client) {
-        // Función para incrementar los contadores cada segundo
         setInterval(() => {
             if (beneficiados.value < limit1) beneficiados.value += 1;
             if (canastas.value < limit2) canastas.value += 1;

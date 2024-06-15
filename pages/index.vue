@@ -80,10 +80,8 @@ const openModal = (image) => {
   animation: shine 6s linear infinite;
 }
 
-/* Estilos para el modal */
 .max-h-screen {
   max-height: 90vh;
-  /* Limitar la altura máxima al 90% del viewport */
 }
 
 .max-w-full {
