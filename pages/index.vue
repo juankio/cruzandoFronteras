@@ -6,7 +6,8 @@
         NUESTROS PROYECTOS
       </h2>
     </div>
-
+    php
+    Copiar código
     <div v-if="error" class="text-red-500 text-center">
       <p>Error fetching images: {{ error }}</p>
     </div>
@@ -14,10 +15,13 @@
       <p>Loading...</p>
     </div>
     <div v-else>
-      <div v-for="(images, folder) in imagesByFolder" :key="folder">
-        <h3 class="text-2xl md:text-4xl font-bold mb-16 text-orange-500 dark:text-orange-400 mt-16 ">{{ folder }}</h3>
+      <div v-for="(folderData, folder) in imagesByFolder" :key="folder">
+        <h3 class="text-2xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mt-16">{{ folder }}</h3>
+        <div v-if="folderData.description" class="text-sm md:text-lg  mb-8 text-gray-600 dark:text-gray-400">
+          {{ folderData.description }}
+        </div>
         <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
-          <div v-for="(image, key) in images" :key="key"
+          <div v-for="(image, key) in folderData.images" :key="key"
             class="relative rounded-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
             <div @click="openModal(image)">
               <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-black dark:bg-white">
@@ -37,8 +41,7 @@
         <button @click="isOpen = false" class="absolute top-2 right-2 text-black dark:text-white">
           <UIcon class="text-3xl hover:text-red-500" name="i-heroicons-x-circle-16-solid" />
         </button>
-        <h2 class="text-orange-500 dark:text-orange-400 text-center font-bold text-4xl mb-4">{{ selectedImage.public_id
-          }}</h2>
+
         <div class="flex justify-center">
           <NuxtImg :src="selectedImage.secure_url" :alt="selectedImage.public_id"
             class="max-h-screen max-w-full object-contain" />
@@ -47,10 +50,7 @@
     </div>
   </div>
 </template>
-
 <script setup>
-
-
 const isOpen = ref(false);
 const selectedImage = ref({});
 const { data: imagesByFolder, error } = await useFetch('/api/fetchImages');
@@ -60,7 +60,6 @@ const openModal = (image) => {
   isOpen.value = true;
 };
 </script>
-
 <style scoped>
 .text-orange-500 {
   color: #ff8c00;
@@ -81,5 +80,15 @@ const openModal = (image) => {
 .animate-shine {
   background-size: 200%;
   animation: shine 6s linear infinite;
+}
+
+/* Estilos para el modal */
+.max-h-screen {
+  max-height: 90vh;
+  /* Limitar la altura máxima al 90% del viewport */
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 </style>
