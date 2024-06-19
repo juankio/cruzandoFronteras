@@ -1,4 +1,4 @@
-// Función para obtener datos de Cloudinary
+
 async function fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix) {
   const response = await fetch(`${cloudinaryUrl}?type=upload&prefix=${prefix}`, {
     headers: {
@@ -13,7 +13,6 @@ async function fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix
   return await response.json();
 }
 
-// Función para obtener los nombres de las carpetas de Cloudinary
 async function fetchFolderNames(cloudinaryUrl, username, password, prefix) {
   const response = await fetch(`${cloudinaryUrl}?type=upload&prefix=${prefix}`, {
     headers: {
@@ -38,7 +37,6 @@ async function fetchFolderNames(cloudinaryUrl, username, password, prefix) {
   return Array.from(folders);
 }
 
-// Función para buscar actualizaciones y agregar metadatos
 async function fetchMetadata(cloudinaryUrl, username, password, publicId) {
   const metadataResponse = await fetch(`${cloudinaryUrl}/upload/${publicId}`, {
     headers: {
@@ -47,14 +45,12 @@ async function fetchMetadata(cloudinaryUrl, username, password, publicId) {
   });
 
   if (!metadataResponse.ok) {
-    console.error(`Error fetching metadata for ${publicId}: ${metadataResponse.statusText}`);
-    return null; // Retorna null en caso de error
+    return null; 
   }
 
   return await metadataResponse.json();
 }
 
-// Función para obtener imágenes por carpeta
 async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
   const data = await fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix);
   const folderStructure = {};
@@ -67,7 +63,7 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
       const folder = path[index];
 
       if (index === path.length - 1) {
-        // Estamos en el nivel de la imagen
+       
         if (!currentLevel.images) {
           currentLevel.images = [];
         }
@@ -77,7 +73,7 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
           public_id: resource.public_id,
         };
 
-        // Fetch additional metadata if available
+       
         if (resource.last_updated && resource.last_updated.updated_at) {
           const metadata = await fetchMetadata(cloudinaryUrl, username, password, resource.public_id);
           if (metadata) {
@@ -91,7 +87,7 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
 
         currentLevel.images.push(imageData);
       } else {
-        // Estamos en un subfolder
+        
         if (!currentLevel[folder]) {
           currentLevel[folder] = {};
         }
@@ -103,7 +99,7 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
   return folderStructure;
 }
 
-// Función para obtener la estructura completa de carpetas
+
 async function getCompleteFolderStructure(cloudinaryUrl, username, password, prefix) {
   const folders = await fetchFolderNames(cloudinaryUrl, username, password, prefix);
   const folderStructure = {};
@@ -124,7 +120,7 @@ async function getCompleteFolderStructure(cloudinaryUrl, username, password, pre
   return folderStructure;
 }
 
-// Handler principal
+
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const cloudinaryUrl = config.cloudinaryUrl;
@@ -139,7 +135,6 @@ export default defineEventHandler(async (event) => {
     const completeFolderStructure = await getCompleteFolderStructure(cloudinaryUrl, username, password, 'proyectos/');
     return completeFolderStructure;
   } catch (error) {
-    console.error("Error in fetch: ", error);
     return { error: error.message };
   }
 });

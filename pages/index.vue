@@ -14,7 +14,9 @@
     </div>
     <div v-else>
       <div v-for="(subfolders, folder) in imagesByFolder" :key="folder">
-        <h3 class="text-2xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mt-16">{{ folder }}</h3>
+        <h3
+          class="text-2xl md:text-6xl font-bold bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 text-transparent bg-clip-text animate-shine font-sans mt-16">
+          {{ folder }}</h3>
         <div v-for="(subfolderData, subfolder) in subfolders" :key="subfolder">
           <h4 class="text-xl md:text-3xl font-bold text-orange-400 dark:text-orange-300 mt-12">{{ subfolder }}</h4>
           <div v-if="subfolderData.description" class="text-sm md:text-lg mb-8 text-gray-600 dark:text-gray-400">
@@ -58,22 +60,17 @@ const isOpen = ref(false);
 const selectedImage = ref({});
 const { data: imagesByFolder, error } = await useFetch('/api/fetchImages');
 
-console.log('Data fetched from API:', imagesByFolder);
 if (imagesByFolder) {
   for (const [folder, subfolders] of Object.entries(imagesByFolder.value)) {
-    console.log(`Folder: ${folder}`);
     for (const [subfolder, subfolderData] of Object.entries(subfolders)) {
-      console.log(`  Subfolder: ${subfolder}`);
-      console.log(`  Subfolder Data: `, subfolderData);
       if (subfolderData.images) {
         subfolderData.images.forEach((image, index) => {
-          console.log(`    Image ${index}: `, image);
+
         });
       }
     }
   }
 }
-console.log('Error:', error);
 
 useHead({
   title: 'Fundación Cruzando Fronteras - Inicio',
