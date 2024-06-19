@@ -13,17 +13,20 @@
       <p>Loading...</p>
     </div>
     <div v-else>
-      <div v-for="(folderData, folder) in imagesByFolder" :key="folder">
+      <div v-for="(subfolders, folder) in imagesByFolder" :key="folder">
         <h3 class="text-2xl md:text-4xl font-bold text-orange-500 dark:text-orange-400 mt-16">{{ folder }}</h3>
-        <div v-if="folderData.description" class="text-sm md:text-lg  mb-8 text-gray-600 dark:text-gray-400">
-          {{ folderData.description }}
-        </div>
-        <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
-          <div v-for="(image, key) in folderData.images" :key="key"
-            class="relative rounded-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
-            <div @click="openModal(image)">
-              <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-black dark:bg-white">
-                <NuxtImg :src="image.secure_url" :alt="image.public_id" class="h-full w-full object-fill" />
+        <div v-for="(subfolderData, subfolder) in subfolders" :key="subfolder">
+          <h4 class="text-xl md:text-3xl font-bold text-orange-400 dark:text-orange-300 mt-12">{{ subfolder }}</h4>
+          <div v-if="subfolderData.description" class="text-sm md:text-lg mb-8 text-gray-600 dark:text-gray-400">
+            {{ subfolderData.description }}
+          </div>
+          <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
+            <div v-for="(image, key) in subfolderData.images" :key="key"
+              class="relative rounded-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
+              <div @click="openModal(image)">
+                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-black dark:bg-white">
+                  <NuxtImg :src="image.secure_url" :alt="image.public_id" class="h-full w-full object-cover" />
+                </div>
               </div>
             </div>
           </div>
@@ -39,7 +42,6 @@
         <button @click="isOpen = false" class="absolute top-2 right-2 text-black dark:text-white">
           <UIcon class="text-3xl hover:text-red-500" name="i-heroicons-x-circle-16-solid" />
         </button>
-
         <div class="flex justify-center">
           <NuxtImg :src="selectedImage.secure_url" :alt="selectedImage.public_id"
             class="max-h-screen max-w-full object-contain" />
@@ -48,10 +50,30 @@
     </div>
   </div>
 </template>
+
 <script setup>
+import { ref } from 'vue';
+
 const isOpen = ref(false);
 const selectedImage = ref({});
 const { data: imagesByFolder, error } = await useFetch('/api/fetchImages');
+
+console.log('Data fetched from API:', imagesByFolder);
+if (imagesByFolder) {
+  for (const [folder, subfolders] of Object.entries(imagesByFolder.value)) {
+    console.log(`Folder: ${folder}`);
+    for (const [subfolder, subfolderData] of Object.entries(subfolders)) {
+      console.log(`  Subfolder: ${subfolder}`);
+      console.log(`  Subfolder Data: `, subfolderData);
+      if (subfolderData.images) {
+        subfolderData.images.forEach((image, index) => {
+          console.log(`    Image ${index}: `, image);
+        });
+      }
+    }
+  }
+}
+console.log('Error:', error);
 
 useHead({
   title: 'Fundación Cruzando Fronteras - Inicio',
@@ -59,13 +81,14 @@ useHead({
     { name: 'description', content: 'Fundación Cruzando Fronteras ofrece servicios de educación, recreación, bienestar, nutrición y salud a comunidades vulnerables en Colombia.' },
     { name: 'keywords', content: 'Fundación, Cruzando Fronteras, bienestar familiar, educación, salud, nutrición, recreación' }
   ]
-})
+});
 
 const openModal = (image) => {
   selectedImage.value = image;
   isOpen.value = true;
 };
 </script>
+
 <style scoped>
 .text-orange-500 {
   color: #ff8c00;
