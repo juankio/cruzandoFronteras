@@ -1,6 +1,11 @@
+async function fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix, nextCursor = null) {
+  console.log('Fetching data from Cloudinary with prefix:', prefix);
+  let url = `${cloudinaryUrl}?type=upload&prefix=${prefix}`;
+  if (nextCursor) {
+    url += `&next_cursor=${nextCursor}`;
+  }
 
-async function fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix) {
-  const response = await fetch(`${cloudinaryUrl}?type=upload&prefix=${prefix}`, {
+  const response = await fetch(url, {
     headers: {
       'Authorization': 'Basic ' + Buffer.from(username + ':' + password).toString('base64')
     }
@@ -10,21 +15,28 @@ async function fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix
     throw new Error(`Error fetching images: ${response.statusText}`);
   }
 
-  return await response.json();
+  const data = await response.json();
+  return data;
+}
+
+async function fetchAllDataFromCloudinary(cloudinaryUrl, username, password, prefix) {
+  let allResources = [];
+  let nextCursor = null;
+
+  do {
+    const data = await fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix, nextCursor);
+    allResources = allResources.concat(data.resources);
+    nextCursor = data.next_cursor;
+  } while (nextCursor);
+
+  return { resources: allResources };
 }
 
 async function fetchFolderNames(cloudinaryUrl, username, password, prefix) {
-  const response = await fetch(`${cloudinaryUrl}?type=upload&prefix=${prefix}`, {
-    headers: {
-      'Authorization': 'Basic ' + Buffer.from(username + ':' + password).toString('base64')
-    }
-  });
+  console.log('Fetching folder names with prefix:', prefix);
+  const data = await fetchAllDataFromCloudinary(cloudinaryUrl, username, password, prefix);
 
-  if (!response.ok) {
-    throw new Error(`Error fetching folder names: ${response.statusText}`);
-  }
 
-  const data = await response.json();
   const folders = new Set();
 
   if (data.resources) {
@@ -34,7 +46,8 @@ async function fetchFolderNames(cloudinaryUrl, username, password, prefix) {
     }
   }
 
-  return Array.from(folders);
+  const folderArray = Array.from(folders);
+  return folderArray;
 }
 
 async function fetchMetadata(cloudinaryUrl, username, password, publicId) {
@@ -45,14 +58,15 @@ async function fetchMetadata(cloudinaryUrl, username, password, publicId) {
   });
 
   if (!metadataResponse.ok) {
-    return null; 
+    return null;
   }
 
-  return await metadataResponse.json();
+  const metadata = await metadataResponse.json();
+  return metadata;
 }
 
 async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
-  const data = await fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix);
+  const data = await fetchAllDataFromCloudinary(cloudinaryUrl, username, password, prefix);
   const folderStructure = {};
 
   for (const resource of data.resources) {
@@ -63,7 +77,6 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
       const folder = path[index];
 
       if (index === path.length - 1) {
-       
         if (!currentLevel.images) {
           currentLevel.images = [];
         }
@@ -73,7 +86,6 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
           public_id: resource.public_id,
         };
 
-       
         if (resource.last_updated && resource.last_updated.updated_at) {
           const metadata = await fetchMetadata(cloudinaryUrl, username, password, resource.public_id);
           if (metadata) {
@@ -87,7 +99,6 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
 
         currentLevel.images.push(imageData);
       } else {
-        
         if (!currentLevel[folder]) {
           currentLevel[folder] = {};
         }
@@ -98,7 +109,6 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
 
   return folderStructure;
 }
-
 
 async function getCompleteFolderStructure(cloudinaryUrl, username, password, prefix) {
   const folders = await fetchFolderNames(cloudinaryUrl, username, password, prefix);
@@ -120,7 +130,6 @@ async function getCompleteFolderStructure(cloudinaryUrl, username, password, pre
   return folderStructure;
 }
 
-
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const cloudinaryUrl = config.cloudinaryUrl;
@@ -135,6 +144,7 @@ export default defineEventHandler(async (event) => {
     const completeFolderStructure = await getCompleteFolderStructure(cloudinaryUrl, username, password, 'proyectos/');
     return completeFolderStructure;
   } catch (error) {
+    console.error('Error:', error);
     return { error: error.message };
   }
 });
