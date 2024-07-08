@@ -1,8 +1,8 @@
 <template>
     <div
-        class="relative flex items-center justify-center rounded-lg bg-white dark:bg-gray-800 p-4 md:p-0 transition-colors transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
+        class="relative flex items-center justify-center rounded-lg bg-white dark:bg-gray-900 p-4 md:p-0 transition-colors transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
         <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
-        <div class="bg-white dark:bg-gray-900 p-8 rounded-lg shadow-md w-full">
+        <div class="bg-white dark:bg-gray-900 p-8 rounded-lg  w-full">
             <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
                 <UFormGroup name="name" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Nombre</label>
