@@ -47,8 +47,10 @@
             </li>
             <li>
               <ClientOnly>
-                <UButton class="text-black dark:text-black" :icon="isDark ? 'i-heroicons-moon' : 'i-heroicons-sun'"
-                  color="black" variant="ghost" aria-label="Theme" @click="toggleDarkMode" />
+                <UButton
+                  class="text-black dark:text-black fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 hover:font-bold"
+                  :icon="isDark ? 'i-heroicons-moon' : 'i-heroicons-sun'" color="black" variant="ghost"
+                  aria-label="Theme" @click="toggleDarkMode" />
                 <template #fallback>
                   <div class="w-8 h-8" />
                 </template>
@@ -58,7 +60,7 @@
         </div>
       </div>
     </nav>
-    <div class="pt-20"></div>
+    <div class="pt-10"></div>
   </div>
 </template>
 

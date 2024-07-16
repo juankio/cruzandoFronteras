@@ -2,7 +2,7 @@
     <span class="relative">
         <UTooltip :text="Tool" :popper="{ placement: 'right' }">
             <span
-                class="underline decoration-orange-500 dark:decoration-orange-400 decoration-4 font-bold text-black dark:text-white">{{
+                class="underline fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-1 decoration-orange-500 dark:decoration-yellow-200 decoration-4 font-bold text-gray-800 dark:text-gray-100">{{
             word }}</span>
         </UTooltip>
     </span>

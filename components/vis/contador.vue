@@ -7,12 +7,12 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-yellow-500 dark:bg-yellow-300"></div>
                     <div
                         class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-colors fade-in delay-0">
-                        <div class="icon mb-4 text-5xl text-orange-500 dark:text-orange-400">
+                        <div class="icon mb-4 text-5xl text-orange-500 dark:text-yellow-200">
                             <i class="fas fa-user"></i>
                         </div>
-                        <div class="text-lg text-gray-500 dark:text-gray-400">Más De</div>
-                        <div class="text-5xl font-bold text-orange-500 dark:text-orange-400">{{ beneficiados }}</div>
-                        <div class="text-lg text-gray-700 dark:text-gray-300">beneficiarios atendidos</div>
+                        <div class="text-lg text-gray-800 dark:text-gray-300">Más De</div>
+                        <div class="text-5xl font-bold text-orange-500 dark:text-yellow-200">{{ beneficiados }}</div>
+                        <div class="text-lg text-gray-800 dark:text-gray-300">beneficiarios atendidos</div>
                     </div>
                 </div>
                 <div
@@ -20,12 +20,12 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-yellow-500 dark:bg-yellow-300"></div>
                     <div
                         class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-colors fade-in delay-0">
-                        <div class="icon mb-4 text-5xl text-orange-500 dark:text-orange-400">
+                        <div class="icon mb-4 text-5xl text-orange-500 dark:text-yellow-200">
                             <i class="fas fa-user"></i>
                         </div>
-                        <div class="text-lg text-gray-500 dark:text-gray-400">Más De</div>
-                        <div class="text-5xl font-bold text-orange-500 dark:text-orange-400">{{ canastas }}</div>
-                        <div class="text-lg text-gray-700 dark:text-gray-300">canastas nutricionales entregadas</div>
+                        <div class="text-lg text-gray-800 dark:text-gray-300">Más De</div>
+                        <div class="text-5xl font-bold text-orange-500 dark:text-yellow-200">{{ canastas }}</div>
+                        <div class="text-lg text-gray-800 dark:text-gray-300">canastas nutricionales entregadas</div>
                     </div>
                 </div>
                 <div
@@ -33,12 +33,12 @@
                     <div class="absolute top-0 left-0 w-full h-1 bg-yellow-500 dark:bg-yellow-300"></div>
                     <div
                         class="counter-box bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-colors fade-in delay-0">
-                        <div class="icon mb-4 text-5xl text-orange-500 dark:text-orange-400">
+                        <div class="icon mb-4 text-5xl text-orange-500 dark:text-yellow-200">
                             <i class="fas fa-user"></i>
                         </div>
-                        <div class="text-lg text-gray-500 dark:text-gray-400">Atención En Más De</div>
-                        <div class="text-5xl font-bold text-orange-500 dark:text-orange-400">{{ municipios }}</div>
-                        <div class="text-lg text-gray-700 dark:text-gray-300">municipios</div>
+                        <div class="text-lg text-gray-800 dark:text-gray-300">Atención En Más De</div>
+                        <div class="text-5xl font-bold text-orange-500 dark:text-yellow-200">{{ municipios }}</div>
+                        <div class="text-lg text-gray-800 dark:text-gray-300">municipios</div>
                     </div>
                 </div>
             </div>

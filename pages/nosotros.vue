@@ -38,6 +38,9 @@
 <script setup>
 useHead({
     title: 'Fundación Cruzando Fronteras - Nosotros',
+    htmlAttrs: {
+        lang: 'es'
+    },
     meta: [
         { name: 'description', content: 'Conoce más sobre Fundación Cruzando Fronteras, nuestra historia, misión y equipo.' },
         { name: 'keywords', content: 'Fundación, Cruzando Fronteras, nosotros, misión, equipo' }

@@ -15,11 +15,11 @@
     <div v-else>
       <div v-for="(subfolders, folder) in imagesByFolder" :key="folder">
         <h3
-          class="text-2xl md:text-6xl font-bold bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 text-transparent bg-clip-text animate-shine font-sans mt-16">
+          class="text-4xl text-center md:text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-600 to-orange-400 dark:from-yellow-400 dark:via-yellow-200 dark:to-yellow-400 text-transparent bg-clip-text animate-shine font-sans mt-16">
           {{ folder }}</h3>
         <div v-for="(subfolderData, subfolder) in subfolders" :key="subfolder">
-          <h4 class="text-xl md:text-3xl font-bold text-orange-400 dark:text-orange-300 mt-12">{{ subfolder }}</h4>
-          <div v-if="subfolderData.description" class="text-sm md:text-2xl mb-8 text-gray-600 dark:text-gray-400">
+          <h4 class="text-xl md:text-3xl font-bold text-orange-600 dark:text-yellow-200 mt-12">{{ subfolder }}</h4>
+          <div v-if="subfolderData.description" class="text-sm md:text-xl mb-8 text-gray-800 dark:text-gray-400">
             {{ subfolderData.description }}
           </div>
           <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
@@ -74,6 +74,9 @@ if (imagesByFolder) {
 
 useHead({
   title: 'Fundación Cruzando Fronteras - Inicio',
+  htmlAttrs: {
+    lang: 'es'
+  },
   meta: [
     { name: 'description', content: 'Fundación Cruzando Fronteras ofrece servicios de educación, recreación, bienestar, nutrición y salud a comunidades vulnerables en Colombia.' },
     { name: 'keywords', content: 'Fundación, Cruzando Fronteras, bienestar familiar, educación, salud, nutrición, recreación' }

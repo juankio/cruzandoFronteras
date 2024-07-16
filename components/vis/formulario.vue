@@ -1,35 +1,35 @@
 <template>
     <div
-        class="relative flex items-center justify-center rounded-lg bg-white dark:bg-gray-900 p-4 md:p-0 transition-colors transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
+        class="relative flex items-center justify-center rounded-lg bg-gray-200 shadow-lg dark:bg-gray-900 p-4 md:p-0 transition-colors transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
         <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
         <div class="bg-white dark:bg-gray-900 p-8 rounded-lg  w-full">
             <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
                 <UFormGroup name="name" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Nombre</label>
-                    <UInput icon="i-heroicons-user-16-solid" size="lg" class="text-start w-full" color="orange"
+                    <UInput icon="i-heroicons-user-16-solid" size="lg" class="text-start w-full" :color="color"
                         type="text" :trailing="false" placeholder="Ej. Juan Pérez" v-model="state.name" />
                 </UFormGroup>
                 <UFormGroup name="email" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Correo electrónico</label>
-                    <UInput icon="i-heroicons-envelope-16-solid" size="lg" class="text-start w-full" color="orange"
+                    <UInput icon="i-heroicons-envelope-16-solid" size="lg" class="text-start w-full" :color="color"
                         type="email" :trailing="false" placeholder="Ej. juan.perez@example.com" v-model="state.email" />
                 </UFormGroup>
                 <UFormGroup name="phone" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Teléfono</label>
-                    <UInput icon="i-heroicons-phone-20-solid" size="lg" class="text-start w-full" color="orange"
+                    <UInput icon="i-heroicons-phone-20-solid" size="lg" class="text-start w-full" :color="color"
                         type="tel" :trailing="false" placeholder="Ej. 312-456-789" v-model="state.phone" />
                 </UFormGroup>
                 <UFormGroup name="message" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Mensaje</label>
-                    <UTextarea size="lg" class="text-start w-full" color="orange" type="text" :trailing="false"
+                    <UTextarea size="lg" class="text-start w-full" :color="color" type="text" :trailing="false"
                         placeholder="Ej. Me gusta lo que hace la fundacion Cruzando fronteras"
                         v-model="state.message" />
                 </UFormGroup>
 
                 <UButton :disabled="!isFormValid || isLoading" :loading="isLoading"
-                    icon="i-heroicons-paper-airplane-solid" size="sm" color="primary" variant="solid"
+                    icon="i-heroicons-paper-airplane-solid" size="sm" :color="color" variant="solid"
                     :label="isLoading ? 'Enviando...' : 'Enviar'" :trailing="false" @click="onClickSubmit"
-                    class="bg-orange-500 dark:bg-orange-400 text-white text-center px-4 py-2 rounded-lg hover:bg-orange-600 dark:hover:bg-orange-500 hover:animate-fly"
+                    class="bg-orange-500 dark:bg-yellow-200 text-white text-center px-4 py-2 rounded-lg hover:bg-orange-600 dark:hover:bg-yellow-400 hover:animate-fly"
                     block />
             </UForm>
         </div>
@@ -42,6 +42,14 @@ import emailjs from 'emailjs-com'
 import type { FormSubmitEvent } from '#ui/types'
 
 const toast = useToast()
+
+const colorMode = useColorMode();
+
+const color = computed(() => {
+    return colorMode.value === 'dark' ? 'yellow' : 'orange';
+});
+
+
 
 const schema = object({
     name: string().required('Nombre es obligatorio'),
