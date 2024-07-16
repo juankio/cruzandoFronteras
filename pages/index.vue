@@ -19,8 +19,8 @@
           {{ folder }}</h3>
         <div v-for="(subfolderData, subfolder) in subfolders" :key="subfolder">
           <h4 class="text-xl md:text-3xl font-bold text-orange-400 dark:text-orange-300 mt-12">{{ subfolder }}</h4>
-          <div v-if="subfolderData.description" class="text-gray-600 dark:text-gray-400">
-            <p class="text-sm md:text-2xl mb-8">{{ subfolderData.description }}</p>
+          <div v-if="subfolderData.description" class="text-sm md:text-2xl mb-8 text-gray-600 dark:text-gray-400">
+            {{ subfolderData.description }}
           </div>
           <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
             <div v-for="(image, key) in subfolderData.images" :key="key"
