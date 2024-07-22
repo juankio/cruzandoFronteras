@@ -6,27 +6,27 @@
             <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
                 <UFormGroup name="name" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Nombre</label>
-                    <UInput icon="i-heroicons-user-16-solid" size="lg" class="text-start w-full" :color="colorModo"
+                    <UInput icon="i-heroicons-user-16-solid" size="lg" class="text-start w-full" color="orange"
                         type="text" :trailing="false" placeholder="Ej. Juan Pérez" v-model="state.name" />
                 </UFormGroup>
                 <UFormGroup name="email" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Correo electrónico</label>
-                    <UInput icon="i-heroicons-envelope-16-solid" size="lg" class="text-start w-full" :color="colorModo"
+                    <UInput icon="i-heroicons-envelope-16-solid" size="lg" class="text-start w-full" color="orange"
                         type="email" :trailing="false" placeholder="Ej. juan.perez@example.com" v-model="state.email" />
                 </UFormGroup>
                 <UFormGroup name="phone" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Teléfono</label>
-                    <UInput icon="i-heroicons-phone-20-solid" size="lg" class="text-start w-full" :color="colorModo"
+                    <UInput icon="i-heroicons-phone-20-solid" size="lg" class="text-start w-full" color="orange"
                         type="tel" :trailing="false" placeholder="Ej. 312-456-7890" v-model="state.phone" />
                 </UFormGroup>
                 <UFormGroup name="message" class="mb-4">
                     <label class="block text-gray-700 dark:text-gray-300">Mensaje</label>
-                    <UTextarea size="lg" class="text-start w-full" :color="colorModo" type="text" :trailing="false"
+                    <UTextarea size="lg" class="text-start w-full" color="orange" type="text" :trailing="false"
                         placeholder="Ej. Me gusta lo que hace la fundación Cruzando Fronteras"
                         v-model="state.message" />
                 </UFormGroup>
                 <UButton :disabled="!isFormValid || isLoading" :loading="isLoading"
-                    icon="i-heroicons-paper-airplane-solid" size="sm" :color="colorModo" variant="solid"
+                    icon="i-heroicons-paper-airplane-solid" size="sm" color="orange" variant="solid"
                     :label="isLoading ? 'Enviando...' : 'Enviar'" :trailing="false" @click="onClickSubmit"
                     class="bg-orange-500 dark:bg-yellow-200 text-white text-center px-4 py-2 rounded-lg hover:bg-orange-600 dark:hover:bg-yellow-400 hover:animate-fly"
                     block />
@@ -38,14 +38,9 @@
 <script setup lang="ts">
 import { object, string, number, type InferType } from 'yup';
 import emailjs from 'emailjs-com';
-import { useColorMode } from '@vueuse/core';
 
 const toast = useToast();
-const colorMode = useColorMode();
 
-const colorModo = computed(() => {
-    return colorMode.value === 'dark' ? 'orange' : 'yellow';
-});
 
 const schema = object({
     name: string().required('Nombre es obligatorio'),
