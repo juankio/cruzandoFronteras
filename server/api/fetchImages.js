@@ -1,3 +1,7 @@
+import NodeCache from 'node-cache';
+
+const cache = new NodeCache({ stdTTL: 60 * 60 * 24 }); // Cache TTL: 24 hours
+
 async function fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix, nextCursor = null) {
   console.log('Fetching data from Cloudinary with prefix:', prefix);
   let url = `${cloudinaryUrl}?type=upload&prefix=${prefix}`;
@@ -34,9 +38,14 @@ async function fetchAllDataFromCloudinary(cloudinaryUrl, username, password, pre
 
 async function fetchFolderNames(cloudinaryUrl, username, password, prefix) {
   console.log('Fetching folder names with prefix:', prefix);
+  const cacheKey = `folders_${prefix}`;
+  const cachedFolders = cache.get(cacheKey);
+
+  if (cachedFolders) {
+    return cachedFolders;
+  }
+
   const data = await fetchAllDataFromCloudinary(cloudinaryUrl, username, password, prefix);
-
-
   const folders = new Set();
 
   if (data.resources) {
@@ -47,6 +56,7 @@ async function fetchFolderNames(cloudinaryUrl, username, password, prefix) {
   }
 
   const folderArray = Array.from(folders);
+  cache.set(cacheKey, folderArray); // Cache the folder names
   return folderArray;
 }
 
@@ -66,6 +76,13 @@ async function fetchMetadata(cloudinaryUrl, username, password, publicId) {
 }
 
 async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
+  const cacheKey = `images_${prefix}`;
+  const cachedImages = cache.get(cacheKey);
+
+  if (cachedImages) {
+    return cachedImages;
+  }
+
   const data = await fetchAllDataFromCloudinary(cloudinaryUrl, username, password, prefix);
   const folderStructure = {};
 
@@ -107,6 +124,7 @@ async function getImagesByFolder(cloudinaryUrl, username, password, prefix) {
     }
   }
 
+  cache.set(cacheKey, folderStructure); // Cache the images by folder
   return folderStructure;
 }
 
