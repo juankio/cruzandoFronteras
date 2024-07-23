@@ -1,6 +1,6 @@
 import NodeCache from 'node-cache';
 
-const cache = new NodeCache({ stdTTL: 60 * 60 * 24 }); // Cache TTL: 24 hours
+const cache = new NodeCache({ stdTTL: 60 * 10, checkperiod: 60 * 5 }); // Cache TTL: 10 minutes, check for expired keys every 5 minutes
 
 async function fetchDataFromCloudinary(cloudinaryUrl, username, password, prefix, nextCursor = null) {
   console.log('Fetching data from Cloudinary with prefix:', prefix);
