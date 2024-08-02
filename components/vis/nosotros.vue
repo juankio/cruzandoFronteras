@@ -6,8 +6,8 @@
                     <!-- Misión -->
                     <div
                         class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transform transition-transform duration-300 hover:z-10 hover:scale-105 hover:-translate-y-2">
-                        <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
-                        <h3 class="text-2xl font-semibold mb-4 text-orange-500 dark:text-yellow-200">Nuestra Misión</h3>
+                        <div class="top-line bg-red-700 dark:bg-pink-500 w-full h-1 absolute top-0 left-0"></div>
+                        <h3 class="text-2xl font-semibold mb-4 text-red-700 dark:text-pink-500">Nuestra Misión</h3>
                         <p class="text-base text-gray-800 dark:text-gray-300">
                             Acompañar a comunidades en condiciones de vulnerabilidad, ofreciéndoles servicios de
                             <UiUnderlinetext word="educación" Tool="Programas educativos para un futuro mejor" />,
@@ -23,8 +23,8 @@
                     <!-- Visión -->
                     <div
                         class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transform transition-transform duration-300 hover:z-10 hover:scale-105 hover:-translate-y-2">
-                        <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
-                        <h3 class="text-2xl font-semibold mb-4 text-orange-500 dark:text-yellow-200">Nuestra Visión</h3>
+                        <div class="top-line bg-red-700 dark:bg-pink-500 w-full h-1 absolute top-0 left-0"></div>
+                        <h3 class="text-2xl font-semibold mb-4 text-red-700 dark:text-pink-500">Nuestra Visión</h3>
                         <p class="text-base text-gray-800 dark:text-gray-300">
                             La FUNDACIÓN PARA EL MEJORAMIENTO INTEGRAL DE LA CALIDAD DE VIDA DE LOS COLOMBIANOS
                             “CRUZANDO FRONTERAS” será
@@ -44,42 +44,41 @@
                     <!-- Valores -->
                     <div
                         class="relative p-6 bg-white dark:bg-gray-900 rounded-lg shadow-lg transform transition-transform duration-300 hover:z-10 hover:scale-105 hover:-translate-y-2">
-                        <div class="top-line bg-yellow-500 dark:bg-yellow-300 w-full h-1 absolute top-0 left-0"></div>
-                        <h3 class="text-2xl font-semibold mb-4 text-orange-500 dark:text-yellow-200">Áreas de Impacto
-                        </h3>
+                        <div class="top-line bg-red-700 dark:bg-pink-500 w-full h-1 absolute top-0 left-0"></div>
+                        <h3 class="text-2xl font-semibold mb-4 text-red-700 dark:text-pink-500">Áreas de Impacto</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-800 dark:text-gray-300">
                             <div>
                                 <ul class="list-disc pl-5">
                                     <li
-                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-orange-500 dark:text-yellow-200">
+                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-red-700 dark:text-pink-500">
                                         <p class="text-gray-800 dark:text-gray-300">Niñez</p>
                                     </li>
                                     <li
-                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-orange-500 dark:text-yellow-200">
+                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-red-700 dark:text-pink-500">
                                         <p class="text-gray-800 dark:text-gray-300">Juventud</p>
                                     </li>
                                     <li
-                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-orange-500 dark:text-yellow-200">
+                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-red-700 dark:text-pink-500">
                                         <p class="text-gray-800 dark:text-gray-300">Adulto Mayor</p>
                                     </li>
                                     <li
-                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-orange-500 dark:text-yellow-200">
+                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-red-700 dark:text-pink-500">
                                         <p class="text-gray-800 dark:text-gray-300">Diversidad Funcional</p>
                                     </li>
                                     <li
-                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-orange-500 dark:text-yellow-200">
+                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-red-700 dark:text-pink-500">
                                         <p class="text-gray-800 dark:text-gray-300">Grupos Étnicos</p>
                                     </li>
                                     <li
-                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-orange-500 dark:text-yellow-200">
+                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-red-700 dark:text-pink-500">
                                         <p class="text-gray-800 dark:text-gray-300">Población de Alto Riesgo</p>
                                     </li>
                                     <li
-                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-orange-500 dark:text-yellow-200">
+                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-red-700 dark:text-pink-500">
                                         <p class="text-gray-800 dark:text-gray-300">Desplazados</p>
                                     </li>
                                     <li
-                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-orange-500 dark:text-yellow-200">
+                                        class="fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 text-red-700 dark:text-pink-500">
                                         <p class="text-gray-800 dark:text-gray-300">Mujeres Cabeza de Hogar</p>
                                     </li>
                                 </ul>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <footer
-            class="bg-gradient-to-r from-yellow-500 to-yellow-300 dark:from-yellow-200 dark:to-yellow-300 text-black py-8 mt-8">
+            class="bg-gradient-to-r from-red-700 to-pink-500 dark:from-pink-500 dark:to-red-700 text-black dark:text-white py-8 mt-8">
             <div
                 class="container mx-auto px-4 flex flex-col items-center md:flex-row md:justify-evenly space-y-4 md:space-y-0">
                 <div class="text-center md:text-left">
@@ -13,8 +13,7 @@
                 <div class="text-center md:text-left">
                     <p class="font-bold mb-2">Contact Information</p>
                     <p><a href="tel:+573167641291">+57 (320) 442-3676</a></p>
-                    <p><a href="mailto:fcruzandoFronteras@gmail.com">fcruzandoFronteras@gmail.com</a>
-                    </p>
+                    <p><a href="mailto:fcruzandoFronteras@gmail.com">fcruzandoFronteras@gmail.com</a></p>
                     <p><a href="https://cruzando-fronteras.vercel.app/"
                             target="_blank">www.cruzando-fronteras.vercel.app</a></p>
                 </div>

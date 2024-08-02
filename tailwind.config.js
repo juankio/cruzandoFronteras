@@ -11,7 +11,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Permanent Marker', 'sans-serif'],
+        sans: ['Roboto', 'sans-serif'],
       },
     },
   },

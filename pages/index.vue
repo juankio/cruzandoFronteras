@@ -2,11 +2,11 @@
   <div>
     <div>
       <h2
-        class="text-4xl md:text-6xl text-center font-bold bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 text-transparent bg-clip-text animate-shine font-sans">
+        class="text-4xl md:text-6xl text-center font-bold bg-gradient-to-r from-red-700 via-pink-500 to-red-700 text-transparent bg-clip-text animate-shine font-sans">
         NUESTROS PROYECTOS
       </h2>
     </div>
-    <div v-if="error" class="text-red-500 text-center">
+    <div v-if="error" class="text-red-700 text-center">
       <p>Error fetching images: {{ error }}</p>
     </div>
     <div v-else-if="!Object.keys(imagesByFolder).length" class="text-center">
@@ -15,10 +15,11 @@
     <div v-else>
       <div v-for="(subfolders, folder) in imagesByFolder" :key="folder">
         <h3
-          class="text-4xl text-center md:text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-600 to-orange-400 dark:from-yellow-400 dark:via-yellow-200 dark:to-yellow-400 text-transparent bg-clip-text animate-shine font-sans mt-16">
-          {{ folder }}</h3>
+          class="text-4xl text-center md:text-5xl font-bold bg-gradient-to-r from-pink-500 via-red-700 to-pink-500 dark:from-red-500 dark:via-pink-200 dark:to-red-500 text-transparent bg-clip-text animate-shine font-sans mt-16">
+          {{ folder }}
+        </h3>
         <div v-for="(subfolderData, subfolder) in subfolders" :key="subfolder">
-          <h4 class="text-xl md:text-3xl font-bold text-orange-600 dark:text-yellow-200 mt-12">{{ subfolder }}</h4>
+          <h4 class="text-xl md:text-3xl font-bold text-red-700 dark:text-pink-500 mt-12">{{ subfolder }}</h4>
           <div v-if="subfolderData.description" class="text-sm md:text-xl mb-8 text-gray-800 dark:text-gray-400">
             {{ subfolderData.description }}
           </div>
@@ -42,7 +43,7 @@
       @click="isOpen = false">
       <div class="bg-white/40 dark:bg-black/30 p-6 rounded-lg shadow-2xl w-50 max-w-6xl mx-auto relative" @click.stop>
         <button @click="isOpen = false" class="absolute top-2 right-2 text-black dark:text-white">
-          <UIcon class="text-3xl hover:text-red-500" name="i-heroicons-x-circle-16-solid" />
+          <UIcon class="text-3xl hover:text-red-700" name="i-heroicons-x-circle-16-solid" />
         </button>
         <div class="flex justify-center">
           <NuxtImg :src="selectedImage.secure_url" :alt="selectedImage.public_id"
@@ -93,7 +94,7 @@ const openModal = (image) => {
 .text-orange-500 {
   color: #ff8c00;
   font-weight: 700;
-  font-family: 'Permanent Marker', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 @keyframes shine {
