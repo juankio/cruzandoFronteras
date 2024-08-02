@@ -38,8 +38,6 @@
 <script setup lang="ts">
 import { object, string, type InferType } from 'yup';
 import emailjs from 'emailjs-com';
-import { reactive, ref, computed } from 'vue';
-import useToast from 'vue-toastification';
 
 const toast = useToast();
 
