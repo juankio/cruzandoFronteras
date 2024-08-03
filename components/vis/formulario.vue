@@ -1,26 +1,26 @@
 <template>
     <div
         class="relative flex items-center justify-center rounded-lg bg-white shadow-lg dark:bg-gray-900 p-4 md:p-0 transition-all duration-300 hover:scale-105 hover:-translate-y-2">
-        <div class="top-line bg-red-700 dark:bg-pink-500 w-full h-1 absolute top-0 left-0"></div>
+        <div class="top-line bg-red-600 dark:bg-pink-500 w-full h-1 absolute top-0 left-0"></div>
         <div class="bg-white dark:bg-gray-900 p-8 rounded-lg w-full">
             <UForm :schema="schema" :state="state" class="w-full" @submit="onSubmit">
                 <UFormGroup name="name" class="mb-4">
-                    <label class="block text-red-700 dark:text-pink-500">Nombre</label>
+                    <label class="block text-red-600 dark:text-pink-500">Nombre</label>
                     <UInput icon="i-heroicons-user-16-solid" size="lg" class="text-start w-full" color="red" type="text"
                         :trailing="false" placeholder="Ej. Juan Pérez" v-model="state.name" />
                 </UFormGroup>
                 <UFormGroup name="email" class="mb-4">
-                    <label class="block text-red-700 dark:text-pink-500">Correo electrónico</label>
+                    <label class="block text-red-600 dark:text-pink-500">Correo electrónico</label>
                     <UInput icon="i-heroicons-envelope-16-solid" size="lg" class="text-start w-full" color="red"
                         type="email" :trailing="false" placeholder="Ej. juan.perez@example.com" v-model="state.email" />
                 </UFormGroup>
                 <UFormGroup name="phone" class="mb-4">
-                    <label class="block text-red-700 dark:text-pink-500">Teléfono</label>
+                    <label class="block text-red-600 dark:text-pink-500">Teléfono</label>
                     <UInput icon="i-heroicons-phone-20-solid" size="lg" class="text-start w-full" color="red" type="tel"
                         :trailing="false" placeholder="Ej. 312-456-7890" v-model="state.phone" />
                 </UFormGroup>
                 <UFormGroup name="message" class="mb-4">
-                    <label class="block text-red-700 dark:text-pink-500">Mensaje</label>
+                    <label class="block text-red-600 dark:text-pink-500">Mensaje</label>
                     <UTextarea size="lg" class="text-start w-full" color="red" type="text" :trailing="false"
                         placeholder="Ej. Me gusta lo que hace la fundación Cruzando Fronteras"
                         v-model="state.message" />

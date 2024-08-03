@@ -2,7 +2,7 @@
     <div>
         <div>
             <h2
-                class="text-4xl md:text-6xl p-5 text-center font-bold bg-gradient-to-r mb-12 from-red-700 via-pink-500 to-red-700 text-transparent bg-clip-text animate-shine">
+                class="text-4xl p-6 md:text-6xl text-center font-bold bg-gradient-to-r from-red-600 via-red-500 to-red-600 dark:from-pink-500 dark:via-pink-600 dark:to-pink-500 text-transparent bg-clip-text animate-shine font-sans">
                 ¿Quienes Somos?
             </h2>
         </div>
@@ -11,7 +11,7 @@
         </div>
         <div class="text-center m-10">
             <h2
-                class="text-4xl md:text-6xl p-5 text-center font-bold bg-gradient-to-r from-red-700 via-pink-500 to-red-700 text-transparent bg-clip-text animate-shine">
+                class="text-4xl p-6 md:text-6xl text-center font-bold bg-gradient-to-r from-red-600 via-red-500 to-red-600 dark:from-pink-500 dark:via-pink-600 dark:to-pink-500 text-transparent bg-clip-text animate-shine font-sans">
                 Nuestra Misión, Visión y Valores
             </h2>
             <p class="text-lg text-gray-700 dark:text-gray-300">Conoce más sobre lo que nos motiva y nos guía.</p>
@@ -21,7 +21,7 @@
         </div>
         <div class="text-center m-6">
             <h2
-                class="text-4xl md:text-6xl p-5 text-center font-bold bg-gradient-to-r from-red-700 via-pink-500 to-red-700 text-transparent bg-clip-text animate-shine">
+                class="text-4xl p-6 md:text-6xl text-center font-bold bg-gradient-to-r from-red-600 via-red-500 to-red-600 dark:from-pink-500 dark:via-pink-600 dark:to-pink-500 text-transparent bg-clip-text animate-shine font-sans">
                 Impacto y Alcance
             </h2>
             <p class="text-lg text-gray-700 dark:text-gray-300">Descubre cómo estamos impactando vidas y comunidades a
@@ -43,5 +43,5 @@ useHead({
         { name: 'description', content: 'Conoce más sobre Fundación Cruzando Fronteras, nuestra historia, misión y equipo.' },
         { name: 'keywords', content: 'Fundación, Cruzando Fronteras, nosotros, misión, equipo' }
     ]
-})
+});
 </script>

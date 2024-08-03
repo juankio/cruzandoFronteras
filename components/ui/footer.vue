@@ -1,10 +1,10 @@
 <template>
     <div>
         <footer
-            :class="['relative bg-red-600 dark:bg-pink-500 text-white py-8 mt-8 shadow-lg transition-nav', { 'bg-red-700 dark:bg-pink-600': isScrolled }]">
+            :class="['relative bg-red-700 dark:bg-pink-600 text-white py-8 mt-8 shadow-lg transition-nav', { 'bg-red-700 dark:bg-pink-600': isScrolled }]">
             <!-- Curva superior -->
             <div class="absolute inset-x-0 -top-24">
-                <svg class="w-full h-24 text-red-600 dark:text-pink-500 rotate-180" preserveAspectRatio="none"
+                <svg class="w-full h-24 text-red-700 dark:text-pink-600 rotate-180" preserveAspectRatio="none"
                     viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
                     <path fill="currentColor"
                         d="M0,224L48,213.3C96,203,192,181,288,176C384,171,480,181,576,170.7C672,160,768,128,864,122.7C960,117,1056,139,1152,138.7C1248,139,1344,117,1392,106.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
