@@ -2,30 +2,30 @@
   <div>
     <div>
       <h2
-        class="text-4xl md:text-6xl text-center font-bold bg-gradient-to-r from-red-700 via-pink-500 to-red-700 text-transparent bg-clip-text animate-shine font-sans">
+        class="text-4xl md:text-6xl text-center font-bold bg-gradient-to-r from-red-600 via-red-500 to-red-600 dark:from-pink-500 dark:via-pink-600 dark:to-pink-500 text-transparent bg-clip-text animate-shine font-sans">
         NUESTROS PROYECTOS
       </h2>
     </div>
-    <div v-if="error" class="text-red-700 text-center">
+    <div v-if="error" class="text-red-600 text-center">
       <p>Error fetching images: {{ error }}</p>
     </div>
     <div v-else-if="!Object.keys(imagesByFolder).length" class="text-center">
       <p>Loading...</p>
     </div>
     <div v-else>
-      <div v-for="(subfolders, folder) in imagesByFolder" :key="folder">
+      <div v-for="(subfolders, folder) in imagesByFolder" :key="folder" class="mt-8">
         <h3
-          class="text-4xl text-center md:text-5xl font-bold bg-gradient-to-r from-pink-500 via-red-700 to-pink-500 dark:from-red-500 dark:via-pink-200 dark:to-red-500 text-transparent bg-clip-text animate-shine font-sans mt-16">
+          class="text-4xl text-center md:text-5xl font-bold bg-gradient-to-r from-red-500 via-red-600 to-red-500 dark:from-pink-500 dark:via-pink-600 dark:to-pink-500 text-transparent bg-clip-text animate-shine font-sans mt-16">
           {{ folder }}
         </h3>
-        <div v-for="(subfolderData, subfolder) in subfolders" :key="subfolder">
-          <h4 class="text-xl md:text-3xl font-bold text-red-700 dark:text-pink-500 mt-12">{{ subfolder }}</h4>
-          <div v-if="subfolderData.description" class="text-sm md:text-xl mb-8 text-gray-800 dark:text-gray-400">
+        <div v-for="(subfolderData, subfolder) in subfolders" :key="subfolder" class="mt-8">
+          <h4 class="text-xl md:text-3xl font-bold text-red-600 dark:text-pink-500 mt-12">{{ subfolder }}</h4>
+          <div v-if="subfolderData.description" class="text-sm md:text-xl mb-8 text-black dark:text-gray-400">
             {{ subfolderData.description }}
           </div>
           <div class="grid grid-cols-2 gap-4 xl:grid-cols-4 mt-4">
             <div v-for="(image, key) in subfolderData.images" :key="key"
-              class="relative rounded-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2">
+              class="relative rounded-lg transform transition-transform duration-300 hover:scale-105 hover:-translate-y-2 shadow-lg hover:shadow-2xl">
               <div @click="openModal(image)">
                 <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-black dark:bg-white">
                   <NuxtImg :src="image.secure_url" :alt="image.public_id" class="h-full w-full object-cover" />
@@ -39,11 +39,11 @@
 
     <!-- Modal -->
     <div v-if="isOpen"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-white/40 dark:bg-black/30 bg-opacity-50"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 dark:bg-black/70 bg-opacity-50"
       @click="isOpen = false">
-      <div class="bg-white/40 dark:bg-black/30 p-6 rounded-lg shadow-2xl w-50 max-w-6xl mx-auto relative" @click.stop>
+      <div class="bg-white p-6 rounded-lg shadow-2xl w-50 max-w-6xl mx-auto relative" @click.stop>
         <button @click="isOpen = false" class="absolute top-2 right-2 text-black dark:text-white">
-          <UIcon class="text-3xl hover:text-red-700" name="i-heroicons-x-circle-16-solid" />
+          <UIcon class="text-3xl hover:text-red-600" name="i-heroicons-x-circle-16-solid" />
         </button>
         <div class="flex justify-center">
           <NuxtImg :src="selectedImage.secure_url" :alt="selectedImage.public_id"
@@ -93,7 +93,7 @@ const openModal = (image) => {
 <style scoped>
 .text-orange-500 {
   color: #ff8c00;
-  font-weight: 700;
+  font-weight: 600;
   font-family: 'Roboto', sans-serif;
 }
 
