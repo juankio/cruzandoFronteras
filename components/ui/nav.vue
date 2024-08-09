@@ -6,7 +6,7 @@
       <div class="flex flex-wrap items-center justify-between mx-auto p-4 relative">
         <a href="/" class="flex items-center">
           <img src="/logoBorder.png"
-            :class="['transition-logo', isScrolled ? 'h-12 w-12 md:h-16 md:w-16 mt-0' : 'h-12 w-16 md:h-24 md:w-24 absolute left-0 right-0 md:mt-10', 'z-10']"
+            :class="['transition-logo', isScrolled ? 'h-12 w-12 md:h-16 md:w-16 mt-0' : 'h-12 w-16 md:h-24 md:w-24 absolute left-0 right-0 pl-3 md:mt-10', 'z-10']"
             alt="Cruzando Fronteras Logo" />
           <span class="text-2xl font-bold relative text-white ml-2" :class="isScrolled ? '' : 'left-20'">Cruzando
             Fronteras</span>
@@ -53,7 +53,7 @@
               <ClientOnly>
                 <UButton
                   class="text-white fade-in delay-6 transition-transform duration-300 hover:scale-105 hover:-translate-y-2 hover:font-bold"
-                  :icon="isDark ? 'i-heroicons-moon' : 'i-heroicons-sun'" color="black" variant="ghost"
+                  :icon="isDark ? 'i-heroicons-moon' : 'i-heroicons-sun'" color="white" variant="ghost"
                   aria-label="Theme" @click="toggleDarkMode" />
                 <template #fallback>
                   <div class="w-8 h-8" />
