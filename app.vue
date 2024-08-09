@@ -3,7 +3,7 @@
   <div>
     <UiNav />
     <UiCarusel />
-    <div class="m-10 md:m-20">
+    <div class="m-10 md:m-20 pb-20">
       <NuxtPage />
     </div>
     <UNotifications />

@@ -3,10 +3,13 @@
     <nav
       :class="['fixed top-0 left-0 w-full z-50 shadow-lg transition-nav', { 'bg-red-600 dark:bg-pink-500': !isScrolled, 'bg-red-700 dark:bg-pink-600 ': isScrolled }]">
       <!-- Contenido del navbar -->
-      <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+      <div class="flex flex-wrap items-center justify-between mx-auto p-4 relative">
         <a href="/" class="flex items-center">
-          <img src="/logoBorder.png" class="h-10 w-10" alt="Cruzando Fronteras Logo" />
-          <span class="text-2xl font-bold text-white ml-2">Cruzando Fronteras</span>
+          <img src="/logoBorder.png"
+            :class="['transition-logo', isScrolled ? 'h-12 w-12 md:h-16 md:w-16 mt-0' : 'h-12 w-16 md:h-24 md:w-24 absolute left-0 right-0 md:mt-10', 'z-10']"
+            alt="Cruzando Fronteras Logo" />
+          <span class="text-2xl font-bold relative text-white ml-2" :class="isScrolled ? '' : 'left-20'">Cruzando
+            Fronteras</span>
         </a>
         <button @click="toggleMenu" class="md:hidden text-white mobile-menu-button">
           <UIcon class="text-3xl ml-4" name="i-heroicons-bars-3-20-solid" />
@@ -61,7 +64,7 @@
         </div>
       </div>
       <!-- Curva superior -->
-      <div v-if="!isScrolled" class="absolute inset-x-0 ">
+      <div v-if="!isScrolled" class="absolute inset-x-0 -mt-1">
         <svg class="w-full h-24 text-red-600 dark:text-pink-500 rotate-180" preserveAspectRatio="none"
           viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
           <path fill="currentColor"
@@ -92,7 +95,7 @@ const isDark = computed({
 const linkClass = (path: string) => {
   return [
     'block py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:font-bold md:p-0 text-white transition duration-300 ease-in-out',
-    { 'border-b-4 border-pink-500 dark:border-red-700': route.path === path }
+    { 'border-b-4 border-white dark:border-white': route.path === path }
   ];
 };
 
@@ -156,6 +159,11 @@ nav ul li a.border-b-4 {
 /* Transición para el menú */
 .transition-menu {
   transition: opacity 0.5s, transform 0.5s;
+}
+
+/* Transición para el logo */
+.transition-logo {
+  transition: height 0.5s, width 0.5s, margin-top 0.5s;
 }
 
 /* Animación personalizada */

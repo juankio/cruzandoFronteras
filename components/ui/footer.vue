@@ -3,7 +3,7 @@
         <footer
             :class="['relative bg-red-700 dark:bg-pink-600 text-white py-8 mt-8 shadow-lg transition-nav', { 'bg-red-700 dark:bg-pink-600': isScrolled }]">
             <!-- Curva superior -->
-            <div class="absolute inset-x-0 -top-24">
+            <div class="absolute inset-x-0 -top-20 ">
                 <svg class="w-full h-24 text-red-700 dark:text-pink-600 rotate-180" preserveAspectRatio="none"
                     viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
                     <path fill="currentColor"
