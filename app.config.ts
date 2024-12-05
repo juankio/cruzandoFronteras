@@ -37,7 +37,7 @@ export default defineAppConfig({
         meta: [
             { name: 'description', content: 'Fundación Cruzando Fronteras ofrece servicios de educación, recreación, bienestar, nutrición y salud a comunidades vulnerables en Colombia, promoviendo la convivencia ciudadana y el progreso comunitario.' },
             { name: 'keywords', content: 'Fundación, Cruzando Fronteras, bienestar familiar, educación, salud, nutrición, recreación' },
-            { name: 'google-site-verification', content: 'googlee7cb8f2280745c69' }
+            { name: 'google-site-verification', content: 'LWS6BBDupP-qEOltKi_raL0m_StE3TPOmw_AmSUJXto' }
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/s.png' },
