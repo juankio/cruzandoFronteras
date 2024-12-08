@@ -24,12 +24,13 @@ export default defineNuxtConfig({
         { name: 'google-site-verification', content: 'LWS6BBDupP-qEOltKi_raL0m_StE3TPOmw_AmSUJXto' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/s.png' }
+        { rel: 'icon', type: 'image/x-icon', href: '/s.png' },
+        { rel: 'canonical', href: 'https://fundacioncruzandofronteras.org' } // URL canónica
       ]
     }
   },
   sitemap: {
-    hostname: 'https://juansupelano.me/',
+    hostname: 'https://fundacioncruzandofronteras.org/', // Dominio principal
     gzip: true,
     routes: [
       '/',
