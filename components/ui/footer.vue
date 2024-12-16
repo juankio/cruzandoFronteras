@@ -31,7 +31,7 @@
                     <p><a href="tel:+573204423676" class="text-white hover:underline">+57 (320) 442-3676</a></p>
                     <p><a href="mailto:fcruzandoFronteras@gmail.com"
                             class="text-white hover:underline">fcruzandoFronteras@gmail.com</a></p>
-                    <p><a href="https://cruzando-fronteras.vercel.app/" target="_blank"
+                    <p><a href="www.fundacioncruzandofronteras.org" target="_blank"
                             class="text-white hover:underline">www.cruzando-fronteras.vercel.app</a></p>
                 </div>
             </div>
