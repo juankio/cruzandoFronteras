@@ -32,7 +32,7 @@
                     <p><a href="mailto:fcruzandoFronteras@gmail.com"
                             class="text-white hover:underline">fcruzandoFronteras@gmail.com</a></p>
                     <p><a href="www.fundacioncruzandofronteras.org" target="_blank"
-                            class="text-white hover:underline">www.cruzando-fronteras.vercel.app</a></p>
+                            class="text-white hover:underline">www.fundacioncruzandofronteras.org</a></p>
                 </div>
             </div>
         </footer>
